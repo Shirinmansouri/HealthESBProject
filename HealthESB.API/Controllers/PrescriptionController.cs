@@ -30,9 +30,6 @@ namespace HealthESB.API.Controllers
             return await _prescriptionService.Create(prescriptionRequest);
   
         }
-        private bool IsValidEntryData(PrescriptionRequest prescriptionRequest)
-        {  
-            return true;
-        }
+        
     }
 }
