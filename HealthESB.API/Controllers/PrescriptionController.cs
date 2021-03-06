@@ -31,7 +31,7 @@ namespace HealthESB.API.Controllers
   
         }
         private bool IsValidEntryData(PrescriptionRequest prescriptionRequest)
-        {
+        {  
             return true;
         }
     }
