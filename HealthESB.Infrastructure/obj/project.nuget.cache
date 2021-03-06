@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "k2kztWGNXwDg3ICboaTS/ioxEhL9M8/TUlZJOxbPDdl42Q0lWN2a9Wgxgju7+ttw+sSNnLbldWfX/FhMaq1WHA==",
+  "success": true,
+  "projectFilePath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Infrastructure\\HealthESB.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Shirin\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

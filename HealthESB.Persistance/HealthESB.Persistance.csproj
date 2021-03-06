@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HealthESB.Domain\HealthESB.Domain.csproj" />
+    <ProjectReference Include="..\HealthESB.EF\HealthESB.EF.csproj" />
+  </ItemGroup>
+
+</Project>
