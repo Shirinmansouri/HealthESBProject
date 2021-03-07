@@ -53,5 +53,8 @@ namespace HealthESB.Domain.Entities
         [DataMember]
         [StringLength(100)]
         public string BarcodeUid { get; set; }
+        [DataMember]
+        [StringLength(100)]
+        public string Uid { get; set; }
     }
 }

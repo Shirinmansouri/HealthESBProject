@@ -23,5 +23,6 @@ namespace HealthESB.Domain.Model
         public string GenericCode { get; set; }
         public int ProductTypeId { get; set; }
         public string BarcodeUid { get; set; }
+        public string Uid { get; set; }
     }
 }

@@ -25,8 +25,8 @@ namespace HealthESB.Domain.Model
         public string BarcodeUid { get; set; }
         public long PrescriptionBarcodeId { get; set; }
         public long PrescriptionId { get; set; }
-        public string CreatedDate { get; set; }
-        public string UpdatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
         public int? PrescriptionBarcodeDetailesTypesId { get; set; }
         public int? PrescriptionBarcodeStatusId { get; set; }
         public string PrescriptionBarcodeDetailesTypesName { get; set; }
@@ -40,7 +40,7 @@ namespace HealthESB.Domain.Model
         public string PharmacyGln { get; set; }
         public int BasicInsurance { get; set; }
         public int ComplementaryInsurance { get; set; }
-
+        public string Uid { get; set; }
 
     }
 }

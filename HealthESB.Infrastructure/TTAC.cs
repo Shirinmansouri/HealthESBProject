@@ -89,6 +89,7 @@ namespace HealthESB.Infrastructure
                             tTACPrescriptionBarcodeDetailesResponse.Price = int.Parse(jInfo[i]["Price"] == null ? "0" : jInfo[0]["Price"].ToString());
                             tTACPrescriptionBarcodeDetailesResponse.TrackingCode = int.Parse(jInfo[i]["TrackingCode"] == null ? "0" : jInfo[0]["TrackingCode"].ToString());
                             tTACPrescriptionBarcodeDetailesResponse.BarcodeUid = jInfo[0]["BarcodeUid"] == null ? "" : jInfo[0]["BarcodeUid"].ToString();
+                            tTACPrescriptionBarcodeDetailesResponse.Uid = jInfo[0]["Uid"] == null ? "" : jInfo[0]["BarcodeUid"].ToString();
                             res.ItemsInfo.Add(tTACPrescriptionBarcodeDetailesResponse);
                         }
                         
@@ -145,6 +146,7 @@ namespace HealthESB.Infrastructure
                             tTACPrescriptionBarcodeDetailesResponse.Price =int.Parse( jInfo[i]["Price"] == null ? "0" : jInfo[0]["Price"].ToString());
                             tTACPrescriptionBarcodeDetailesResponse.TrackingCode =int.Parse( jInfo[i]["TrackingCode"] == null ? "0" : jInfo[0]["TrackingCode"].ToString());
                             tTACPrescriptionBarcodeDetailesResponse.BarcodeUid = jInfo[0]["BarcodeUid"] == null ? "" : jInfo[0]["BarcodeUid"].ToString();
+                            tTACPrescriptionBarcodeDetailesResponse.Uid = jInfo[0]["Uid"] == null ? "" : jInfo[0]["BarcodeUid"].ToString();
                             res.ItemsInfo.Add(tTACPrescriptionBarcodeDetailesResponse);
                         }
 

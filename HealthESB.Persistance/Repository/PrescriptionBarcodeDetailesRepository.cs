@@ -51,8 +51,8 @@ namespace HealthESB.Persistance.Repository
                            BarcodeUid = a.BarcodeUid,
                            PrescriptionBarcodeId = a.PrescriptionBarcodeId,
                            PrescriptionId = b.PrescriptionId,
-                           CreatedDate = Utilities.GetPersianDateTime((DateTime)a.CreatedDate),
-                           UpdatedDate = Utilities.GetPersianDateTime((DateTime)a.UpdatedDate),
+                           CreatedDate = a.CreatedDate,
+                           UpdatedDate = a.UpdatedDate,
                            PrescriptionBarcodeDetailesTypesId = a.PrescriptionBarcodeDetailesTypesId,
                            PrescriptionBarcodeStatusId = b.PrescriptionBarcodeStatusId,
                            PrescriptionBarcodeDetailesTypesName = s.Name,
@@ -65,7 +65,8 @@ namespace HealthESB.Persistance.Repository
                            MedicalCouncilNumber = p.MedicalCouncilNumber,
                            PharmacyGln = p.PharmacyGln,
                            BasicInsurance = p.BasicInsurance,
-                           ComplementaryInsurance = p.ComplementaryInsurance
+                           ComplementaryInsurance = p.ComplementaryInsurance,
+                           Uid=a.Uid
                        }).AsQueryable();
             if (listDTO.Filter != null && listDTO.Filter != string.Empty)
                 lst = new LinqSearch().ApplyFilter(lst, listDTO.Filter);
