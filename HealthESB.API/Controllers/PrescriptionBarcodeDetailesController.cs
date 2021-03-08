@@ -22,7 +22,7 @@ namespace HealthESB.API.Controllers
             _prescriptionBarcodeDetailesService = prescriptionBarcodeDetailesService;
         }
         [HttpPost("GetPrescriptionActivity")]
-        // [Authorize]
+        [Authorize]
         public async Task<PrescriptionActivityListResponse> GetPrescriptionActivity([FromBody] ListDTO listDTO)
         {
          
