@@ -41,6 +41,15 @@ namespace HealthESB.API
         {
             ConfigureServices configureServices = new ConfigureServices(services);
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowCredentials());
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HealthESB.API", Version = "v1" });
@@ -100,6 +109,8 @@ namespace HealthESB.API
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HealthESB.API v1"));
+
+                app.UseCors("CorsPolicy");
             }
             void RequestResponseHandler(RequestProfilerModel requestProfilerModel)
             {
