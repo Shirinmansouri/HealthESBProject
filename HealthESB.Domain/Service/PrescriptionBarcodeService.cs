@@ -168,7 +168,7 @@ namespace HealthESB.Domain.Service
             {
                 foreach (var item in confirmRequest.Uids)
                 {
-                    var result =await _prescriptionBarcodeRepository.FirstOrDefault(a => a.ReCheckCode == item.ReCheckCode);
+                    var result = await _prescriptionBarcodeRepository.FirstOrDefault(a => a.ReCheckCode == item.ReCheckCode);
                     if (result != null)
                     {
                         result.PrescriptionBarcodeStatusId = (int)PrescriptionBarcodeStatusEnum.FinalConfirmRequest;
@@ -181,12 +181,78 @@ namespace HealthESB.Domain.Service
                 response.resMessage = response.resMessage;
                 return response;
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 response.ToApiError<ConfirmResponse>();
                 response.resCode = response.ErrorCode;
                 response.resMessage = response.resMessage;
                 return response;
+            }
+        }
+        public async Task<ReactiveResponse> ReActivePrescriptionId(long PrescriptionId)
+        {
+            var response = new ReactiveResponse();
+
+            response.ItemsInfo = new List<PrescriptionBarcodeDetailesResponse>();
+            var prescriptionBarcodeDetailes = new PrescriptionBarcodeDetailes();
+            var prescriptionBarcodeDetailesResponse = new PrescriptionBarcodeDetailesResponse();
+            try
+            {
+                if (PrescriptionId == 0)
+                    return response.ToIncompleteInput<ReactiveResponse>();
+
+                TTAC tTAC = new TTAC();
+                var result = await _prescriptionBarcodeDetailesRepository.GetWhere(a => a.PrescriptionBarcode.PrescriptionId == PrescriptionId
+                && a.PrescriptionBarcode.PrescriptionBarcodeStatusId == (int)PrescriptionBarcodeStatusEnum.GetResponseFromServiceProvider
+                && a.Status == 0);
+                if (result == null)
+                    return response.ToRowNotFound<ReactiveResponse>();
+                if (result.Count == 0)
+                    return response.ToRowNotFound<ReactiveResponse>();
+                foreach (var item in result)
+                {
+               
+
+                    TTACReactiveRequest tTACReactiveRequest = new TTACReactiveRequest();
+                    TTACReactiveResponse tTACReactiveResponse = new TTACReactiveResponse();
+
+                    var prescriptionBarcode = await _prescriptionBarcodeRepository.FirstOrDefault(a => a.Id == item.PrescriptionBarcodeId);
+                    var prescription = await _prescriptionRepository.FirstOrDefault(a => a.Id == prescriptionBarcode.PrescriptionId);
+
+                    tTACReactiveRequest.Amount = prescriptionBarcode.Amount;
+                    tTACReactiveRequest.TrackingCode = (int)item.TrackingCode;
+                    tTACReactiveRequest.BarcodeUid = item.BarcodeUid;
+                    tTACReactiveRequest.PharmacyGln = prescription.PharmacyGln;
+                    tTACReactiveRequest.Username = Constants.TTAC_UserName;
+                    tTACReactiveRequest.Password = Constants.TTAC_Password;
+
+                    tTACReactiveResponse = await tTAC.CallReactiveApi(tTACReactiveRequest);
+                    response.ErrorCode = tTACReactiveResponse.ErrorCode;
+                    response.ErrorMessage = tTACReactiveResponse.ErrorMessage;
+                    foreach (var resultItem in tTACReactiveResponse.ItemsInfo)
+                    {
+                        prescriptionBarcodeDetailes = new PrescriptionBarcodeDetailes();
+                        prescriptionBarcodeDetailes.PrescriptionBarcodeId = item.PrescriptionBarcodeId;
+                        prescriptionBarcodeDetailes.PrescriptionBarcodeDetailesTypesId = (int)PrescriptionBarcodeDetailesTypeEnum.ReActiveBarcodeItems;
+                        resultItem.CopyPropertiesTo(prescriptionBarcodeDetailes);
+                        resultItem.CopyPropertiesTo(prescriptionBarcodeDetailesResponse);
+                        response.ItemsInfo.Add(prescriptionBarcodeDetailesResponse);
+
+                        if (tTACReactiveResponse.ErrorCode == 0 && (resultItem.Status == 100 || resultItem.Status==111))
+                        {
+                            prescriptionBarcode.PrescriptionBarcodeStatusId = (int)PrescriptionBarcodeStatusEnum.ReActiveRequest;
+                            await _prescriptionBarcodeRepository.Update(prescriptionBarcode);
+                        }
+                        await _prescriptionBarcodeDetailesRepository.Add(prescriptionBarcodeDetailes);
+
+                    }
+                }
+                return response;
+            }
+            catch (Exception e)
+            {
+                _logService.LogText(e.StackTrace);
+                throw new Exception(e.Message);
             }
         }
     }

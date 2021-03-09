@@ -11,5 +11,6 @@ namespace HealthESB.Domain.IRepository
     public interface IPrescriptionBarcodeDetailesRepository :IGenericRepository<PrescriptionBarcodeDetailes>
     {
         Task<PrescriptionActivityListResponse> GetPrescriptionActivityListByPaging(ListDTO listDTO);
+ 
     }
 }

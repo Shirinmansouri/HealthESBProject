@@ -13,35 +13,42 @@ namespace HealthESB.API.Controllers
     [ApiController]
     public class PrescriptionBarcodeController : ControllerBase
     {
-        private readonly IPrescriptionBarcodeService  _prescriptionBarcodeService;
+        private readonly IPrescriptionBarcodeService _prescriptionBarcodeService;
         public PrescriptionBarcodeController(IPrescriptionBarcodeService prescriptionBarcodeService)
         {
             _prescriptionBarcodeService = prescriptionBarcodeService;
         }
 
         [HttpPost("Create")]
-        [Authorize]
+        //[Authorize]
         public async Task<PrescriptionBarcodeResponse> Create([FromBody] PrescriptionBarcodeRequest prescriptionBarcodeRequest)
         {
 
             return await _prescriptionBarcodeService.Create(prescriptionBarcodeRequest);
-             
+
         }
         [HttpPost("ReActiveUid")]
-        [Authorize]
-        public async Task<ReactiveResponse> ReActiveUid([FromBody] ReactiveRequest  reactiveRequest)
+       // [Authorize]
+        public async Task<ReactiveResponse> ReActiveUid([FromBody] ReactiveRequest reactiveRequest)
         {
 
             return await _prescriptionBarcodeService.ReActive(reactiveRequest);
-              
+
+        }
+        [HttpPost("ReActiveByPrescriptionId")]
+       // [Authorize]
+        public async Task<ReactiveResponse> ReActiveByPrescriptionId([FromBody] GroupReactiveRequest groupReactiveRequest)
+        {
+            return await _prescriptionBarcodeService.ReActivePrescriptionId(groupReactiveRequest.PrescriptionId);
+
         }
         [HttpPost("Confirm")]
-        [Authorize]
+        //[Authorize]
         public async Task<ConfirmResponse> confirm([FromBody] ConfirmRequest confirmRequest)
         {
 
-             return  await _prescriptionBarcodeService.ConfirmUid(confirmRequest);
-           
+            return await _prescriptionBarcodeService.ConfirmUid(confirmRequest);
+
         }
     }
 }

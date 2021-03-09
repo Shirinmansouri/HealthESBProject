@@ -2,6 +2,7 @@
 using HealthESB.Domain.IService;
 using HealthESB.Domain.Model;
 using HealthESB.Framework.Logger;
+using HealthESB.Framework.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,29 @@ namespace HealthESB.Domain.Service
                 throw new Exception(e.Message);
             }
 
+        }
+        public async Task<ReactiveResponse> GetPrescriptionBarcodeDetailesByPrescriptionId(long prescriptionId)
+        {
+            var response = new ReactiveResponse();
+
+            try
+            {
+                var result = await _prescriptionBarcodeDetailesRepository.GetWhere(a => a.PrescriptionBarcode.PrescriptionId == prescriptionId);
+                response.ItemsInfo = new List<PrescriptionBarcodeDetailesResponse>();
+                PrescriptionBarcodeDetailesResponse prescriptionBarcodeDetailesResponse;
+                foreach (var item in result)
+                {
+                    prescriptionBarcodeDetailesResponse = new PrescriptionBarcodeDetailesResponse();
+                    result.CopyPropertiesTo(prescriptionBarcodeDetailesResponse);
+                    response.ItemsInfo.Add(prescriptionBarcodeDetailesResponse);
+                }
+                return response.ToSuccess<ReactiveResponse>();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
     }

@@ -10,5 +10,6 @@ namespace HealthESB.Domain.IService
     public interface IPrescriptionBarcodeDetailesService
     {
         Task<PrescriptionActivityListResponse> GetPrescriptionActivityList(ListDTO listDTO);
+        Task<ReactiveResponse> GetPrescriptionBarcodeDetailesByPrescriptionId(long prescriptionId);
     }
 }

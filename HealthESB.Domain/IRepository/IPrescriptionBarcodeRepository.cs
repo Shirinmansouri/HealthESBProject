@@ -11,6 +11,6 @@ namespace HealthESB.Domain.IRepository
 {
     public interface IPrescriptionBarcodeRepository : IGenericRepository<PrescriptionBarcode>
     {
-       
+  
     }
 }

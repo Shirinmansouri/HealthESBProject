@@ -22,7 +22,7 @@ namespace HealthESB.API.Controllers
             _prescriptionBarcodeDetailesService = prescriptionBarcodeDetailesService;
         }
         [HttpPost("GetPrescriptionActivity")]
-        [Authorize]
+        //[Authorize]
         public async Task<PrescriptionActivityListResponse> GetPrescriptionActivity([FromBody] ListDTO listDTO)
         {
          
@@ -39,6 +39,25 @@ namespace HealthESB.API.Controllers
             //searchFilter.rules.Add(new SearchRule() { field = "TrackingCode", data = "2854", op = FilterEnum.OpEnum.cn });
             //listDTO.Filter = Newtonsoft.Json.JsonConvert.SerializeObject(searchFilter);
             //listDTO.IsRequestCount = false;
+            return await _prescriptionBarcodeDetailesService.GetPrescriptionActivityList(listDTO);
+
+        }
+        [HttpPost("GetPrescriptionBarcodeForActivation")]
+       // [Authorize]
+        public async Task<PrescriptionActivityListResponse> GetPrescriptionBarcodeForActivation([FromBody] long prescriptionId)
+        {
+
+            ListDTO listDTO = new ListDTO();
+            SearchFilter searchFilter = new SearchFilter();
+            searchFilter.groupOp = new FilterEnum.GroupOpEnum();
+            searchFilter.groupOp = FilterEnum.GroupOpEnum.And;
+            searchFilter.rules = new List<SearchRule>();
+            searchFilter.rules.Add(new SearchRule() { field = "PrescriptionId", data = prescriptionId.ToString(), op = FilterEnum.OpEnum.eq });
+            searchFilter.rules.Add(new SearchRule() { field = "Status", data = "0", op = FilterEnum.OpEnum.eq });
+            listDTO.Filter = Newtonsoft.Json.JsonConvert.SerializeObject(searchFilter);
+            listDTO.IsRequestCount = false;
+            listDTO.PageNum = 1;
+            listDTO.PageSize = 1000;
             return await _prescriptionBarcodeDetailesService.GetPrescriptionActivityList(listDTO);
 
         }

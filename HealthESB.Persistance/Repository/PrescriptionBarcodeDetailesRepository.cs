@@ -66,7 +66,7 @@ namespace HealthESB.Persistance.Repository
                            PharmacyGln = p.PharmacyGln,
                            BasicInsurance = p.BasicInsurance,
                            ComplementaryInsurance = p.ComplementaryInsurance,
-                           Uid=a.Uid
+                           Uid = a.Uid                      
                        }).AsQueryable();
             if (listDTO.Filter != null && listDTO.Filter != string.Empty)
                 lst = new LinqSearch().ApplyFilter(lst, listDTO.Filter);
@@ -77,5 +77,6 @@ namespace HealthESB.Persistance.Repository
             return prescriptionActivityListResponse;
 
         }
+        
     }
 }

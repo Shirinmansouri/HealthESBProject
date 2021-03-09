@@ -12,5 +12,6 @@ namespace HealthESB.Domain.IService
         Task<PrescriptionBarcodeResponse> Create(PrescriptionBarcodeRequest prescriptionBarcodeRequest);
         Task<ReactiveResponse> ReActive(ReactiveRequest reactiveRequest);
         Task<ConfirmResponse> ConfirmUid(ConfirmRequest confirmRequest);
+        Task<ReactiveResponse> ReActivePrescriptionId(long PrescriptionId);
     }
 }
