@@ -41,7 +41,7 @@ namespace HealthESB.Domain.Model
         public int BasicInsurance { get; set; }
         public int ComplementaryInsurance { get; set; }
         public string Uid { get; set; }
-        public decimal? Amount { get; set; }
+        public decimal? Amount { get; set; } 
 
     }
 }
