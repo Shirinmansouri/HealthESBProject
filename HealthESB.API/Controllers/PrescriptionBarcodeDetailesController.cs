@@ -44,7 +44,7 @@ namespace HealthESB.API.Controllers
         }
         [HttpPost("GetPrescriptionBarcodeForActivation")]
        // [Authorize]
-        public async Task<PrescriptionActivityListResponse> GetPrescriptionBarcodeForActivation([FromBody] long prescriptionId)
+        public async Task<PrescriptionActivityListResponse> GetPrescriptionBarcodeForActivation([FromBody] GroupReactiveRequest groupReactiveRequest)
         {
 
             ListDTO listDTO = new ListDTO();
@@ -52,7 +52,7 @@ namespace HealthESB.API.Controllers
             searchFilter.groupOp = new FilterEnum.GroupOpEnum();
             searchFilter.groupOp = FilterEnum.GroupOpEnum.And;
             searchFilter.rules = new List<SearchRule>();
-            searchFilter.rules.Add(new SearchRule() { field = "PrescriptionId", data = prescriptionId.ToString(), op = FilterEnum.OpEnum.eq });
+            searchFilter.rules.Add(new SearchRule() { field = "PrescriptionId", data = groupReactiveRequest.PrescriptionId.ToString(), op = FilterEnum.OpEnum.eq });
             searchFilter.rules.Add(new SearchRule() { field = "Status", data = "0", op = FilterEnum.OpEnum.eq });
             listDTO.Filter = Newtonsoft.Json.JsonConvert.SerializeObject(searchFilter);
             listDTO.IsRequestCount = false;
