@@ -203,7 +203,6 @@ namespace HealthESB.Domain.Service
 
                 TTAC tTAC = new TTAC();
                 var result = await _prescriptionBarcodeDetailesRepository.GetWhere(a => a.PrescriptionBarcode.PrescriptionId == PrescriptionId
-                && a.PrescriptionBarcode.PrescriptionBarcodeStatusId == (int)PrescriptionBarcodeStatusEnum.GetResponseFromServiceProvider
                 && a.Status == 0);
                 if (result == null)
                     return response.ToRowNotFound<ReactiveResponse>();

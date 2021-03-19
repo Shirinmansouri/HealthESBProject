@@ -1,4 +1,5 @@
-﻿using HealthESB.Framework.Utility;
+﻿using HealthESB.Domain.Model;
+using HealthESB.Framework.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -40,8 +41,9 @@ namespace HealthESB.API.Configuration
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
             if (token != null)
-                 attachAccountToContext(context,  token);
-           // await _next(context);
+                attachAccountToContext(context, token);
+             
+            // await _next(context);
 
             var model = new RequestProfilerModel
             {
@@ -67,7 +69,7 @@ namespace HealthESB.API.Configuration
                 _requestResponseHandler(model);
             }
         }
-        private void  attachAccountToContext(HttpContext context, string token)
+        private void attachAccountToContext(HttpContext context, string token)
         {
             try
             {
@@ -86,11 +88,12 @@ namespace HealthESB.API.Configuration
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 context.Items["UserId"] = jwtToken.Claims.First(x => x.Type == "UserId").Value;
                 Constants.LoginUserId = jwtToken.Claims.First(x => x.Type == "UserId").Value;
-
+                
 
             }
-            catch
+            catch 
             {
+                throw ;
                 // do nothing if jwt validation fails
                 // account is not attached to context so request won't have access to secure routes
             }
@@ -128,7 +131,7 @@ namespace HealthESB.API.Configuration
         public async Task<string> GetRequestBody(HttpRequest request)
         {
             request.EnableBuffering();
-           // request.EnableRewind();
+            // request.EnableRewind();
             using (var requestStream = _recyclableMemoryStreamManager.GetStream())
             {
                 await request.Body.CopyToAsync(requestStream);
