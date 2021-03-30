@@ -39,24 +39,14 @@ namespace HealthESB.API.Controllers
         [HttpPost]
         [Route("CreateUser")]
         [Authorize]
-        public async Task<IActionResult> CreateUser([FromBody] UserRegistrationRequest user)
+        public async Task<AutResponse> CreateUser([FromBody] UserRegistrationRequest user)
         {
-            // Check if the incoming request is valid
+            AutResponse baseResponse = new AutResponse();
             if (ModelState.IsValid)
             {
-                // check i the user with the same email exist
                 var existingUser = await _userManager.FindByNameAsync(user.UserName);
-
                 if (existingUser != null)
-                {
-                    return BadRequest(new RegistrationResponse()
-                    {
-                        Result = false,
-                        Errors = new List<string>(){
-                                            "UserName already exist"
-                                        }
-                    });
-                }
+                    return baseResponse.ToDulicateUserName<AutResponse>();
 
                 var newUser = new IdentityUser() { Email = user.Email, UserName = user.UserName };
                 var isCreated = await _userManager.CreateAsync(newUser, user.Password);
@@ -70,61 +60,32 @@ namespace HealthESB.API.Controllers
                     }
 
                     await _userManager.AddToRolesAsync(newUser, LstRoleName);
-
                     var jwtToken = GenerateJwtToken(newUser.Id);
-                    return Ok(new RegistrationResponse()
-                    {
-                        Result = true,
-                        Token = jwtToken
-                    });
+                    baseResponse.Token = jwtToken;
+                    return baseResponse.ToSuccess<AutResponse>();
                 }
 
-                return new JsonResult(new RegistrationResponse()
-                {
-                    Result = false,
-                    Errors = isCreated.Errors.Select(x => x.Description).ToList()
-                }
-                        )
-                { StatusCode = 500 };
+                return baseResponse.ToApiError<AutResponse>();
             }
+            return baseResponse.ToIncompleteInput<AutResponse>();
 
-            return BadRequest(new RegistrationResponse()
-            {
-                Result = false,
-                Errors = new List<string>(){
-                                            "Invalid User"
-                                        }
-            });
         }
         [HttpPost]
         [Route("UpdateUser")]
-        //[Authorize]
-        public async Task<IActionResult> UpdateUser([FromBody] UserRegistrationRequest user)
+        [Authorize]
+        public async Task<BaseResponse> UpdateUser([FromBody] UserRegistrationRequest user)
         {
-            // Check if the incoming request is valid
+            BaseResponse baseResponse = new BaseResponse();
             if (ModelState.IsValid)
             {
                 var existingUser = await _userManager.FindByIdAsync(user.Id);
                 if (existingUser == null)
-                {
-                    return BadRequest(new RegistrationResponse()
-                    {
-                        Result = false,
-                        Errors = new List<string>(){
-                                            "User does not exist"
-                                        }
-                    });
-                }
+                    return baseResponse.ToInvalidUserNameOrPassword<BaseResponse>();
                 var existingUserName = await _userManager.FindByNameAsync(user.UserName);
                 if (existingUserName != null)
                 {
-                    return BadRequest(new RegistrationResponse()
-                    {
-                        Result = false,
-                        Errors = new List<string>(){
-                                            "Duplicate UserName "
-                                        }
-                    });
+                    if (existingUserName.Id != user.Id)
+                        return baseResponse.ToDulicateUserName<BaseResponse>();
                 }
                 existingUser.UserName = user.UserName;
                 existingUser.Email = user.Email;
@@ -146,31 +107,13 @@ namespace HealthESB.API.Controllers
 
                     await _userManager.AddToRolesAsync(existingUser, LstRoleName);
 
-                    return Ok(new RegistrationResponse()
-                    {
-                        Result = true
-                    });
+                    return baseResponse.ToSuccess<BaseResponse>();
                 }
 
-                return new JsonResult(new RegistrationResponse()
-                {
-                    Result = false,
-                    Errors = new List<string>()
-                    {
-                        "Error in update user"
-                    }
-                }
-                        )
-                { StatusCode = 500 };
+                return baseResponse.ToApiError<BaseResponse>();
             }
 
-            return BadRequest(new RegistrationResponse()
-            {
-                Result = false,
-                Errors = new List<string>(){
-                                            "Invalid User"
-                                        }
-            });
+            return baseResponse.ToIncompleteInput<BaseResponse>();
         }
         [HttpPost]
         [Route("Login")]
@@ -179,13 +122,13 @@ namespace HealthESB.API.Controllers
             UserListResponse userListResponse = new UserListResponse();
             if (ModelState.IsValid)
             {
-               
+
                 userListResponse.Users = new List<UserRow>();
                 UserRow userRow = new UserRow();
                 var existingUser = await _userManager.FindByNameAsync(user.UserName);
                 if (existingUser == null)
                 {
-                    return userListResponse.ToFailedAuthentication<UserListResponse>();
+                    return userListResponse.ToInvalidUserNameOrPassword<UserListResponse>();
                 }
 
                 var isCorrect = await _userManager.CheckPasswordAsync(existingUser, user.Password);
@@ -198,7 +141,7 @@ namespace HealthESB.API.Controllers
                 }
                 else
                 {
-                    return userListResponse.ToFailedAuthentication<UserListResponse>();
+                    return userListResponse.ToInvalidUserNameOrPassword<UserListResponse>();
                 }
 
                 var roles = _aspNetUserRolesService.getUserRolesByUserIdAsync(existingUser.Id);
@@ -213,9 +156,13 @@ namespace HealthESB.API.Controllers
                     userRow.Claims = new List<ClaimsRow>();
                     userRow.Claims = claim.Result.Claims;
                 }
+                userRow.UserName = user.UserName;
+                userRow.Id = existingUser.Id;
+                userRow.Email = existingUser.Email;
                 userListResponse.Users.Add(userRow);
                 userListResponse.ToSuccess<UserListResponse>();
-                userListResponse.HasError = false;
+
+
                 return userListResponse;
             }
             return userListResponse.ToIncompleteInput<UserListResponse>();
@@ -237,70 +184,41 @@ namespace HealthESB.API.Controllers
         [HttpPost]
         [Route("CreateRoles")]
         [Authorize]
-        public async Task<IActionResult> CreateRoles([FromBody] RoleRequest role)
+        public async Task<BaseResponse> CreateRoles([FromBody] RoleRequest role)
         {
+            BaseResponse baseResponse = new BaseResponse();
             if (ModelState.IsValid)
             {
+
                 if (await _roleManager.RoleExistsAsync(role.Name))
-                    return BadRequest(new RegistrationResponse()
-                    {
-                        Result = false,
-                        Errors = new List<string>(){
-                                            "RoleName already exist"
-                                        }
-                    });
+                    return baseResponse.ToDuplicateRole<BaseResponse>();
                 var newRole = new IdentityRole() { Name = role.Name };
                 var isCreated = await _roleManager.CreateAsync(newRole);
                 if (isCreated.Succeeded)
                 {
-                    return Ok(new RoleResponse()
-                    {
-                        Result = true
-                    });
+                    return baseResponse.ToSuccess<BaseResponse>();
                 }
             }
-            return BadRequest(new RoleResponse()
-            {
-                Result = false,
-                Errors = new List<string>(){
-                                            "Invalid Role"
-                                        }
-            });
+            return baseResponse.ToIncompleteInput<BaseResponse>();
         }
         [HttpPost]
         [Route("UpdateRoles")]
         [Authorize]
-        public async Task<IActionResult> UpdateRoles([FromBody] RoleRequest role)
+        public async Task<BaseResponse> UpdateRoles([FromBody] RoleRequest role)
         {
+            BaseResponse baseResponse = new BaseResponse();
             if (ModelState.IsValid)
             {
                 var existedRole = await _roleManager.FindByIdAsync(role.Id);
                 if (existedRole == null)
-                    return BadRequest(new RegistrationResponse()
-                    {
-                        Result = false,
-                        Errors = new List<string>(){
-                                            "RoleName does not exist"
-                                        }
-                    });
+                    return baseResponse.ToDuplicateRole<BaseResponse>();
                 existedRole.Name = role.Name;
 
                 var isUpdated = await _roleManager.UpdateAsync(existedRole);
                 if (isUpdated.Succeeded)
-                {
-                    return Ok(new RoleResponse()
-                    {
-                        Result = true
-                    });
-                }
+                    return baseResponse.ToSuccess<BaseResponse>();
             }
-            return BadRequest(new RoleResponse()
-            {
-                Result = false,
-                Errors = new List<string>(){
-                                            "Error In Update Role"
-                                        }
-            });
+            return baseResponse.ToIncompleteInput<BaseResponse>();
         }
         [HttpPost]
         [Route("GetRoles")]
@@ -308,15 +226,24 @@ namespace HealthESB.API.Controllers
         public RoleListResponse GetRoles([FromBody] RoleRequest role)
         {
             RoleListResponse roleListResponse = new RoleListResponse();
-            roleListResponse.Roles = new List<RoleRow>();
-            var existedRole = _roleManager.Roles.Where((a => (a.Name == role.Name || string.IsNullOrEmpty(role.Name)) &&
-          (a.Id == role.Id || string.IsNullOrEmpty(role.Id)))).ToList();
-            foreach (var item in existedRole)
+            try
             {
-                roleListResponse.Roles.Add(new RoleRow() { Id = item.Id, Name = item.Name });
+                roleListResponse.Roles = new List<RoleRow>();
+                var existedRole = _roleManager.Roles.Where((a => (a.Name == role.Name || string.IsNullOrEmpty(role.Name)) &&
+              (a.Id == role.Id || string.IsNullOrEmpty(role.Id)))).ToList();
+                foreach (var item in existedRole)
+                {
+                    roleListResponse.Roles.Add(new RoleRow() { Id = item.Id, Name = item.Name });
+                }
+                roleListResponse.ToSuccess<RoleListResponse>();
+                roleListResponse.LstCount = existedRole.Count();
+                return roleListResponse;
             }
-            roleListResponse.LstCount = existedRole.Count();
-            return roleListResponse;
+            catch (Exception ex)
+            {
+                return roleListResponse.ToApiError<RoleListResponse>();
+            }
+
         }
 
         [HttpPost]
@@ -324,7 +251,6 @@ namespace HealthESB.API.Controllers
         [Authorize]
         public async Task<RoleListResponse> getUserRolesByUserIdAsync([FromBody] UserRow User)
         {
-
             return await _aspNetUserRolesService.getUserRolesByUserIdAsync(User.Id);
         }
         [HttpPost]
@@ -333,10 +259,10 @@ namespace HealthESB.API.Controllers
         public async Task<UserListResponse> getUsersAsync([FromBody] ListDTO listDTO)
         {
 
-            SearchFilter searchFilter = new SearchFilter();
-            listDTO.IsRequestCount = false;
-            listDTO.PageNum = 1;
-            listDTO.PageSize = 1000;
+            //SearchFilter searchFilter = new SearchFilter();
+            //listDTO.IsRequestCount = false;
+            //listDTO.PageNum = 1;
+            //listDTO.PageSize = 1000;
             return await _aspNetUserRolesService.getUsersAsync(listDTO);
         }
         [HttpPost]
@@ -344,17 +270,18 @@ namespace HealthESB.API.Controllers
         [Authorize]
         public async Task<ClaimsResponse> GetClaimList([FromBody] ListDTO listDTO)
         {
-            SearchFilter searchFilter = new SearchFilter();
-            listDTO.IsRequestCount = false;
-            listDTO.PageNum = 1;
-            listDTO.PageSize = 1000;
+            //SearchFilter searchFilter = new SearchFilter();
+            //listDTO.IsRequestCount = false;
+            //listDTO.PageNum = 1;
+            //listDTO.PageSize = 1000;
             return await _claimsService.GetListAsync(listDTO);
         }
         [HttpPost]
         [Route("AssignRoleToClaims")]
         [Authorize]
-        public async Task<IActionResult> AssignRoleToClaims([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
+        public async Task<BaseResponse> AssignRoleToClaims([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
         {
+            BaseResponse baseResponse = new BaseResponse();
             var role = _roleManager.Roles.Where(a => a.Id == assignRoleToClaimsRequest.RoleId).FirstOrDefault();
             var claimResult = _claimsService.GetById(assignRoleToClaimsRequest.ClaimId).Result.Claims.FirstOrDefault();
             if (claimResult != null && role != null)
@@ -365,34 +292,18 @@ namespace HealthESB.API.Controllers
                 {
                     var IsCreated = await _roleManager.AddClaimAsync(role, new Claim(claimResult.ActionName, claimResult.Id.ToString()));
                     if (IsCreated.Succeeded)
-                    {
-                        return Ok(new RoleResponse()
-                        {
-                            Result = true
-                        });
-                    }
+                        return baseResponse.ToSuccess<BaseResponse>();
                 }
-                return BadRequest(new RoleResponse()
-                {
-                    Result = false,
-                    Errors = new List<string>(){
-                                            "Error In Update RoleClaim"
-                                        }
-                });
+                return baseResponse.ToApiError<BaseResponse>();
             }
-            return BadRequest(new RoleResponse()
-            {
-                Result = false,
-                Errors = new List<string>(){
-                                            "Invalid input Data"
-                                        }
-            });
+            return baseResponse.ToIncompleteInput<BaseResponse>();
         }
         [HttpPost]
         [Route("RemoveClaimsFromRole")]
         [Authorize]
-        public async Task<IActionResult> RemoveClaimsFromRole([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
+        public async Task<BaseResponse> RemoveClaimsFromRole([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
         {
+            BaseResponse baseResponse = new BaseResponse();
             var role = _roleManager.Roles.Where(a => a.Id == assignRoleToClaimsRequest.RoleId).FirstOrDefault();
             var claimResult = _claimsService.GetById(assignRoleToClaimsRequest.ClaimId).Result.Claims.FirstOrDefault();
             var OldClaims = await _roleManager.GetClaimsAsync(role);
@@ -400,27 +311,10 @@ namespace HealthESB.API.Controllers
             {
                 var IsRemoved = await _roleManager.RemoveClaimAsync(role, new Claim(claimResult.ActionName, claimResult.Id.ToString()));
                 if (IsRemoved.Succeeded)
-                {
-                    return Ok(new RoleResponse()
-                    {
-                        Result = true
-                    });
-                }
-                return BadRequest(new RoleResponse()
-                {
-                    Result = false,
-                    Errors = new List<string>(){
-                                            "Error In Update RoleClaim"
-                                        }
-                });
+                    return baseResponse.ToSuccess<BaseResponse>();
+                return baseResponse.ToApiError<BaseResponse>();
             }
-            return BadRequest(new RoleResponse()
-            {
-                Result = false,
-                Errors = new List<string>(){
-                                            "Invalid input Data"
-                                        }
-            });
+            return baseResponse.ToIncompleteInput<BaseResponse>();
         }
         [HttpPost]
         [Route("GetUserClaims")]

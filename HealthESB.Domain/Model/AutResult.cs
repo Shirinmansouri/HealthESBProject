@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace HealthESB.Domain.Model
 {
-    public class AutResult
+    public class AutResponse : BaseResponse
     {
         public string Token { get; set; }
-        public bool Result { get; set; }
-        public List<string> Errors { get; set; }
     }
 }

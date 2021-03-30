@@ -182,6 +182,54 @@ namespace HealthESB.EF.Data
                 ActionTitleFr = "لیست کاربران"
             };
             costsActions.Add(costChild1);
+            costChild1 = new Claims()
+            {
+                Id = id++,
+                ControllerName = "AuthManagement",
+                ActionName = "GetClaimList",
+                ControllerEntityID = 4,
+                ControlleEnTitile = "AuthManagement",
+                ControlleFaTitile = "مدیریت کاربران",
+                ActionTitleEn = "GetClaimList",
+                ActionTitleFr = "دریافت لیست دسترسی ها"
+            };
+            costsActions.Add(costChild1);
+            costChild1 = new Claims()
+            {
+                Id = id++,
+                ControllerName = "AuthManagement",
+                ActionName = "GetUserClaims",
+                ControllerEntityID = 4,
+                ControlleEnTitile = "AuthManagement",
+                ControlleFaTitile = "مدیریت کاربران",
+                ActionTitleEn = "GetUserClaims",
+                ActionTitleFr = "لیست دسترسی های کاربر"
+            };
+            costsActions.Add(costChild1);
+            costChild1 = new Claims()
+            {
+                Id = id++,
+                ControllerName = "AuthManagement",
+                ActionName = "AssignRoleToClaims",
+                ControllerEntityID = 4,
+                ControlleEnTitile = "AuthManagement",
+                ControlleFaTitile = "مدیریت کاربران",
+                ActionTitleEn = "AssignRoleToClaims",
+                ActionTitleFr = "اختصاص دسترسی به نقش"
+            };
+            costsActions.Add(costChild1);
+            costChild1 = new Claims()
+            {
+                Id = id++,
+                ControllerName = "AuthManagement",
+                ActionName = "RemoveClaimsFromRole",
+                ControllerEntityID = 4,
+                ControlleEnTitile = "AuthManagement",
+                ControlleFaTitile = "مدیریت کاربران",
+                ActionTitleEn = "RemoveClaimsFromRole",
+                ActionTitleFr = "حذف دسترسی از نقش"
+            };
+            costsActions.Add(costChild1);
             modelBuilder.Entity<Claims>().HasData(costsActions);
             return id;
         }

@@ -96,7 +96,7 @@ namespace HealthESB.Domain.Service
 
                 }
 
-
+                response.HasError = false;
                 return response;
 
             }
@@ -152,13 +152,12 @@ namespace HealthESB.Domain.Service
                     await _prescriptionBarcodeDetailesRepository.Add(prescriptionBarcodeDetailes);
 
                 }
-
+                response.HasError = false;
                 return response;
             }
             catch (Exception e)
             {
-                response.HasError = true;
-
+  
                 _logService.LogText("PrescriptionBarcodeInternalError" + e.Message.ToString());
                 throw new Exception(e.Message);
             }

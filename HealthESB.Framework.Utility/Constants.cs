@@ -40,7 +40,10 @@ namespace HealthESB.Framework.Utility
         IncompleteInput=-91,
         ServiceProviderNotResponse=500,
         InvalidLenghtBarcodeUcid = 56,
-        IsSuccessConfirmUcid=1
+        IsSuccessConfirmUcid=1,
+        DuplicateRole=11,
+        DulicateUserName=12,
+        InvalidUserNameOrPassword=13
         
     }
    
@@ -74,8 +77,9 @@ namespace HealthESB.Framework.Utility
         public static string ServiceProviderNotResponse { get { return " عدم پاسخ دهی سرویس دهنده"; } }
         public static string InvalidLenghtBarcodeUcid { get { return " کد بارکد ثبت شده برای دارو دارای طول نامعتبر می باشد"; } }
         public static string IsSuccessConfirmUcid { get { return " عملیات با موفقیت انجام شد"; } }
-
-
+        public static string DuplicateRole { get { return " این رل قبلا تعریف شده است"; } }
+        public static string DulicateUserName { get { return " نام کاربری تکراری می باشد"; } }
+        public static string InvalidUserNameOrPassword { get { return "نام کاربری یا کلمه عبور اشتباه می باشد"; } }
 
     }
 }

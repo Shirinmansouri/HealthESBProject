@@ -47,6 +47,7 @@ namespace HealthESB.Domain.Service
                 prescription.OutErrorMessage = tTACPrescriptionResponse.ErrorMessage;
                 prescription.OutPrescriptionId = tTACPrescriptionResponse.PrescriptionId;
                 await _PrescriptionRepository.Update(prescription);
+                response.HasError = false;
                 return response;
 
             }
