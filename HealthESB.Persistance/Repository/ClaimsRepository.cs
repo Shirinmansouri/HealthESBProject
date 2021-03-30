@@ -23,7 +23,9 @@ namespace HealthESB.Persistance.Repository
         {
             ClaimsResponse claimsResponse = new ClaimsResponse();
             var lst = (from a in Context.Set<Claims>()
-                       select new ClaimsRow() { Id = a.Id, Name = a.Name, Value = a.Value }).AsQueryable();
+                       select new ClaimsRow() { Id = a.Id, ActionName = a.ActionName, ActionTitleEn = a.ActionTitleEn,
+                       ActionTitleFr=a.ActionTitleFr,ControlleEnTitile=a.ControlleEnTitile,ControlleFaTitile=a.ControlleFaTitile,
+                       ControllerEntityID=a.ControllerEntityID,ControllerName=a.ControllerName}).AsQueryable();
             if (listDTO.Filter != null && listDTO.Filter.Trim().Length != 0)
                 lst = new LinqSearch().ApplyFilter(lst, listDTO.Filter);
             if (listDTO.IsRequestCount)

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace HealthESB.Domain.Model
 {
-    public class ClaimsRequest
+  public   class AssignRoleToClaimsRequest
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public string RoleId { get; set; }
+        public int ClaimId { get; set; }
     }
 }

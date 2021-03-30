@@ -23,7 +23,7 @@ namespace HealthESB.API.Controllers
         }
 
         [HttpPost("Create")]
-        [Authorize]
+       //[Authorize]
         public async Task<PrescriptionResponse> Create([FromBody] PrescriptionRequest prescriptionRequest)
         {
    

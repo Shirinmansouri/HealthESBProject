@@ -10,6 +10,7 @@ namespace HealthESB.Domain.Model
     {
         public string ErrorMessage { get; set; }
         public int ErrorCode { get; set; }
+        public bool HasError { get; set; }
     }
 
 

@@ -85,8 +85,15 @@ namespace HealthESB.API
             //  .AddJwtBearer("Bearer", options => options.SaveToken = true);
             //HttpContext.GetTokenAsync("Bearer", "access_token");
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                            .AddEntityFrameworkStores<HealthESBDbContext>();
+ 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<HealthESBDbContext>()
+                .AddDefaultTokenProviders();
+
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+ 
+            //                .AddEntityFrameworkStores<HealthESBDbContext>();
+ 
 
             Constants.TTAC_BaseUrl = Configuration["TTAC:BaseUrl"];
             Constants.TTAC_UserName = Configuration["TTAC:UserName"];
@@ -98,7 +105,7 @@ namespace HealthESB.API
             Constants.TTAC_ReactiveApiName = Configuration["TTAC:ReactiveApiName"];
             Constants.TTAC_ReactiveApiKey = Configuration["TTAC:ReactiveApiKey"];
             Constants.TokenExpirationHours = int.Parse(Configuration["JwtConfig:TokenExpirationHours"]);
-            Constants.TokenKey =Configuration["JwtConfig:Secret"];
+            Constants.TokenKey = Configuration["JwtConfig:Secret"];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

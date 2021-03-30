@@ -8,10 +8,11 @@ using HealthESB.Domain.Entities;
 using HealthESB.Framework.Utility;
 using System.Threading.Tasks;
 using System.Threading;
+using Microsoft.AspNetCore.Identity;
 
 namespace HealthESB.EF
 {
-    public class HealthESBDbContext : IdentityDbContext
+    public class HealthESBDbContext : IdentityDbContext<IdentityUser>
     {
         public HealthESBDbContext()
             : base(SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), "DefaultConnection")
@@ -66,6 +67,11 @@ namespace HealthESB.EF
             {
                 throw;
             }
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Seed();
         }
     }
 }

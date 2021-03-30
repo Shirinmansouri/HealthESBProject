@@ -22,7 +22,10 @@ namespace HealthESB.Framework.DependecyConfig
             services.AddTransient<IPrescriptionBarcodeRepository, PrescriptionBarcodeRepository>();
             services.AddTransient<IPrescriptionRepository, PrescriptionRepository>();
             services.AddTransient<ILogService,LogService>();
- 
+            services.AddTransient<IAspNetUserRolesRespository, AspNetUserRolesRespository>();
+            services.AddTransient<IAspNetUserRolesService, AspNetUserRolesService>();
+            services.AddTransient<IClaimsRepository, ClaimsRepository>();
+            services.AddTransient<IClaimsService, ClaimsService>();
         }
     }
 }

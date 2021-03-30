@@ -10,9 +10,10 @@ namespace HealthESB.Domain.IService
     public interface IClaimsService
     {
 
-         Task<BaseResponse> CreateAsync(ClaimsRequest claimsRequest);
-         Task<ClaimsResponse> GetListAsync(ListDTO listDTO);
-         Task<BaseResponse> UpdateClaimsAsync(ClaimsRequest claimsRequest);
+        Task<BaseResponse> CreateAsync(ClaimsRow claimsRequest);
+        Task<ClaimsResponse> GetListAsync(ListDTO listDTO);
+        Task<BaseResponse> UpdateClaimsAsync(ClaimsRow claimsRequest);
+        Task<ClaimsResponse> GetById(int Id);
 
     }
 }

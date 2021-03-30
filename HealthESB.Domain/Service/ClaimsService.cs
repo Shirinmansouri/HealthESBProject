@@ -23,12 +23,13 @@ namespace HealthESB.Domain.Service
 
 
         }
-        public async Task<BaseResponse> CreateAsync(ClaimsRequest claimsRequest)
+        public async Task<BaseResponse> CreateAsync(ClaimsRow claimsRequest)
         {
             try
             {
                 var response = new BaseResponse();
-                Claims claims = new Entities.Claims() { Name = claimsRequest.Name, Value = claimsRequest.Value };
+                Claims claims = new Entities.Claims();
+                claimsRequest.CopyPropertiesTo(claims);
                 await _claimsRepository.Add(claims);
                 return response.ToSuccess<BaseResponse>();
             }
@@ -54,22 +55,42 @@ namespace HealthESB.Domain.Service
             }
 
         }
-        public async Task<BaseResponse> UpdateClaimsAsync(ClaimsRequest claimsRequest)
+        public async Task<BaseResponse> UpdateClaimsAsync(ClaimsRow claimsRequest)
         {
             try
             {
                 var response = new BaseResponse();
                 // var result =await  _claimsRepository.FirstOrDefault(a => a.Id == claimsRequest.Id);
                 Claims result = new Claims();
-                result.Name = claimsRequest.Name;
-                result.Value = claimsRequest.Value;
-                result.Id = claimsRequest.Id;
+                claimsRequest.CopyPropertiesTo(result);
                 await _claimsRepository.Update(result);
                 return response.ToSuccess<BaseResponse>();
             }
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+            
+        }
+        public async Task<ClaimsResponse> GetById(int Id)
+        {
+            try
+            {
+                var response = new ClaimsResponse();
+                response.Claims = new List<ClaimsRow>();
+                ClaimsRow claimsRow = new ClaimsRow();
+                Claims result = await _claimsRepository.GetById(Id);
+                if (result != null)
+                {
+                    result.CopyPropertiesTo(claimsRow);
+                    response.Claims.Add(claimsRow);
+                }
+                return response.ToSuccess<ClaimsResponse>();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
             }
             
         }

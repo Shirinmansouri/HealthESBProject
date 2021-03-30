@@ -157,6 +157,8 @@ namespace HealthESB.Domain.Service
             }
             catch (Exception e)
             {
+                response.HasError = true;
+
                 _logService.LogText("PrescriptionBarcodeInternalError" + e.Message.ToString());
                 throw new Exception(e.Message);
             }
@@ -246,10 +248,13 @@ namespace HealthESB.Domain.Service
 
                     }
                 }
+                response.HasError = false;
                 return response;
             }
             catch (Exception e)
             {
+                response.HasError = true;
+                response.ToApiError<ReactiveResponse>();
                 _logService.LogText(e.StackTrace);
                 throw new Exception(e.Message);
             }

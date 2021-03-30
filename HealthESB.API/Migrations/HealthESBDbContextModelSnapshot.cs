@@ -26,19 +26,197 @@ namespace HealthESB.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ActionName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Value")
-                        .IsRequired()
+                    b.Property<string>("ActionTitleEn")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ActionTitleFr")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("ControlleEnTitile")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("ControlleFaTitile")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("ControllerEntityID")
+                        .HasMaxLength(100)
+                        .HasColumnType("int");
+
+                    b.Property<string>("ControllerName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Claims");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ActionName = "Create",
+                            ActionTitleEn = "Create",
+                            ActionTitleFr = "ایجاد",
+                            ControlleEnTitile = "PrescriptionBarcode",
+                            ControlleFaTitile = "اقلام نسخه",
+                            ControllerEntityID = 2,
+                            ControllerName = "PrescriptionBarcode"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ActionName = "ReActiveUid",
+                            ActionTitleEn = "ReActiveUid",
+                            ActionTitleFr = "فعال سازی مجدد",
+                            ControlleEnTitile = "PrescriptionBarcode",
+                            ControlleFaTitile = "اقلام نسخه",
+                            ControllerEntityID = 2,
+                            ControllerName = "PrescriptionBarcode"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ActionName = "confirm",
+                            ActionTitleEn = "confirm",
+                            ActionTitleFr = "تایید نهایی اقلام",
+                            ControlleEnTitile = "PrescriptionBarcode",
+                            ControlleFaTitile = "اقلام نسخه",
+                            ControllerEntityID = 2,
+                            ControllerName = "PrescriptionBarcode"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ActionName = "Create",
+                            ActionTitleEn = "Create",
+                            ActionTitleFr = "ایجاد نسخه",
+                            ControlleEnTitile = "Prescription",
+                            ControlleFaTitile = "نسخه",
+                            ControllerEntityID = 1,
+                            ControllerName = "Prescription"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ActionName = "ReActiveByPrescriptionId",
+                            ActionTitleEn = "ReActiveByPrescriptionId",
+                            ActionTitleFr = "فعال سازی گروهی با شماره نسخه",
+                            ControlleEnTitile = "PrescriptionBarcode",
+                            ControlleFaTitile = "اقلام نسخه",
+                            ControllerEntityID = 2,
+                            ControllerName = "PrescriptionBarcode"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ActionName = "GetPrescriptionActivity",
+                            ActionTitleEn = "GetPrescriptionActivity",
+                            ActionTitleFr = "تاریخچه ی درخواست های ارسالی",
+                            ControlleEnTitile = "PrescriptionBarcodeDetailes",
+                            ControlleFaTitile = "جزئیات اقلام نسخه",
+                            ControllerEntityID = 3,
+                            ControllerName = "PrescriptionBarcodeDetailes"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ActionName = "GetPrescriptionBarcodeForActivation",
+                            ActionTitleEn = "GetPrescriptionBarcodeForActivation",
+                            ActionTitleFr = "جزئیات اقلام های نسخه های ارسالی",
+                            ControlleEnTitile = "PrescriptionBarcodeDetailes",
+                            ControlleFaTitile = "جزئیات اقلام نسخه",
+                            ControllerEntityID = 3,
+                            ControllerName = "PrescriptionBarcodeDetailes"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ActionName = "CreateUser",
+                            ActionTitleEn = "CreateUser",
+                            ActionTitleFr = "ایجاد کاربر",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ActionName = "UpdateUser",
+                            ActionTitleEn = "UpdateUser",
+                            ActionTitleFr = "به روززسانی کاربر",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ActionName = "CreateRoles",
+                            ActionTitleEn = "CreateRoles",
+                            ActionTitleFr = "ایجاد نقش",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ActionName = "UpdateRoles",
+                            ActionTitleEn = "UpdateRoles",
+                            ActionTitleFr = "به روزرسانی نقش",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ActionName = "GetRoles",
+                            ActionTitleEn = "GetRoles",
+                            ActionTitleFr = "لیست نقش ها",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            ActionName = "getUserRolesByUserIdAsync",
+                            ActionTitleEn = "getUserRolesByUserIdAsync",
+                            ActionTitleFr = "دریافت نقش های کاربر",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ActionName = "getUsersAsync",
+                            ActionTitleEn = "getUsersAsync",
+                            ActionTitleFr = "لیست کاربران",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        });
                 });
 
             modelBuilder.Entity("HealthESB.Domain.Entities.Prescription", b =>
