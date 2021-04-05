@@ -184,9 +184,8 @@ namespace HealthESB.Domain.Service
             }
             catch (Exception ex)
             {
+                _logService.LogText(ex.Message);
                 response.ToApiError<ConfirmResponse>();
-                response.resCode = response.ErrorCode;
-                response.resMessage = response.resMessage;
                 return response;
             }
         }
@@ -252,7 +251,6 @@ namespace HealthESB.Domain.Service
             }
             catch (Exception e)
             {
-                response.HasError = true;
                 response.ToApiError<ReactiveResponse>();
                 _logService.LogText(e.StackTrace);
                 throw new Exception(e.Message);

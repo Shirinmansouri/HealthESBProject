@@ -32,5 +32,9 @@ namespace HealthESB.Domain.Service
         {
             return await _aspNetUserRolesRespository.getUsersAsync(listDTO);
         }
+        public async Task<ClaimsResponse> GetClaimsByRole(string roleId)
+        {
+            return await _aspNetUserRolesRespository.GetClaimsByRole(roleId);
+        }
     }
 }

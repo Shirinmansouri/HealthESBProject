@@ -58,10 +58,33 @@ namespace HealthESB.Persistance.Repository
             {
                 ClaimsResponse claimsResponse = new ClaimsResponse();
                 claimsResponse.Claims = new List<ClaimsRow>();
-
                 var lst =  Context.UserRoles.Where(a => a.UserId == UserId).Select(a=>a.RoleId);
                 var claimsIds =await Context.RoleClaims.Where(a => lst.Contains(a.RoleId)).Select(a => int.Parse(a.ClaimValue)).ToListAsync();
                 var _claims =await Context.Claims.Where(a => claimsIds.Contains(a.Id)).Select(a=>a).ToListAsync();               
+                foreach (var item in _claims)
+                {
+                    ClaimsRow claimsRow = new ClaimsRow();
+                    item.CopyPropertiesTo(claimsRow);
+                    claimsResponse.Claims.Add(claimsRow);
+                }
+                claimsResponse.LstCount = claimsResponse.Claims.Count();
+                claimsResponse.ToSuccess<ClaimsResponse>();
+                return claimsResponse;
+            }
+            catch (Exception ex)
+            {
+               
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<ClaimsResponse> GetClaimsByRole(string roleId)
+        {
+            try
+            {
+                ClaimsResponse claimsResponse = new ClaimsResponse();
+                claimsResponse.Claims = new List<ClaimsRow>();
+                var claimsIds =await Context.RoleClaims.Where(a => a.RoleId == roleId).Select(a =>int.Parse(a.ClaimValue)).ToListAsync();
+                var _claims = await Context.Claims.Where(a => claimsIds.Contains(a.Id)).Select(a => a).ToListAsync();
                 foreach (var item in _claims)
                 {
                     ClaimsRow claimsRow = new ClaimsRow();

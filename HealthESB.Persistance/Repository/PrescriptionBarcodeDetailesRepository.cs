@@ -66,18 +66,17 @@ namespace HealthESB.Persistance.Repository
                            PharmacyGln = p.PharmacyGln,
                            BasicInsurance = p.BasicInsurance,
                            ComplementaryInsurance = p.ComplementaryInsurance,
-                           Uid = a.Uid ,
-                           Amount=b.Amount
+                           Uid = a.Uid,
+                           Amount = b.Amount
                        }).AsQueryable();
             if (listDTO.Filter != null && listDTO.Filter != string.Empty)
                 lst = new LinqSearch().ApplyFilter(lst, listDTO.Filter);
-            if (listDTO.IsRequestCount)
-                prescriptionActivityListResponse.LstCount = await lst.CountAsync();
-            else
-                prescriptionActivityListResponse.LstPrescriptionActivityRow = await lst.Skip((listDTO.PageNum - 1) * listDTO.PageSize).Take(listDTO.PageSize).ToListAsync();
+
+            prescriptionActivityListResponse.LstCount = await lst.CountAsync();
+            prescriptionActivityListResponse.LstPrescriptionActivityRow = await lst.Skip((listDTO.PageNum - 1) * listDTO.PageSize).Take(listDTO.PageSize).ToListAsync();
             return prescriptionActivityListResponse;
 
         }
-        
+
     }
 }

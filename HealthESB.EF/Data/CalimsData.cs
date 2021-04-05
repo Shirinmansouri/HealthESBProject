@@ -230,6 +230,19 @@ namespace HealthESB.EF.Data
                 ActionTitleFr = "حذف دسترسی از نقش"
             };
             costsActions.Add(costChild1);
+            costChild1 = new Claims()
+            {
+                Id = id++,
+                ControllerName = "AuthManagement",
+                ActionName = "GetRoleClaims",
+                ControllerEntityID = 4,
+                ControlleEnTitile = "AuthManagement",
+                ControlleFaTitile = "مدیریت کاربران",
+                ActionTitleEn = "GetRoleClaims",
+                ActionTitleFr = "لیست دسترسی های نقش"
+            };
+            costsActions.Add(costChild1);
+            
             modelBuilder.Entity<Claims>().HasData(costsActions);
             return id;
         }

@@ -15,6 +15,7 @@ using HealthESB.Framework.Utility;
 using Microsoft.AspNetCore.Authorization;
 using HealthESB.Domain.IService;
 using HealthESB.EF.DynamicFilter;
+using HealthESB.Framework.Logger;
 
 namespace HealthESB.API.Controllers
 {
@@ -27,18 +28,20 @@ namespace HealthESB.API.Controllers
         private readonly JwtConfig _jwtConfig;
         private readonly IAspNetUserRolesService _aspNetUserRolesService;
         private readonly IClaimsService _claimsService;
-        public AuthManagementController(UserManager<IdentityUser> userManager, IOptionsMonitor<JwtConfig> optionsMonitor, RoleManager<IdentityRole> roleManager, IAspNetUserRolesService aspNetUserRolesService, IClaimsService claimsService)
+        private readonly ILogService _logService;
+        public AuthManagementController(ILogService logService, UserManager<IdentityUser> userManager, IOptionsMonitor<JwtConfig> optionsMonitor, RoleManager<IdentityRole> roleManager, IAspNetUserRolesService aspNetUserRolesService, IClaimsService claimsService)
         {
             _userManager = userManager;
             _jwtConfig = optionsMonitor.CurrentValue;
             _roleManager = roleManager;
             _aspNetUserRolesService = aspNetUserRolesService;
             _claimsService = claimsService;
+            _logService = logService;
         }
 
         [HttpPost]
         [Route("CreateUser")]
-       // [Authorize]
+        // [Authorize]
         public async Task<AutResponse> CreateUser([FromBody] UserRegistrationRequest user)
         {
             AutResponse baseResponse = new AutResponse();
@@ -278,44 +281,59 @@ namespace HealthESB.API.Controllers
         }
         [HttpPost]
         [Route("AssignRoleToClaims")]
-        [Authorize]
+       // [Authorize]
         public async Task<BaseResponse> AssignRoleToClaims([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
         {
             BaseResponse baseResponse = new BaseResponse();
-            var role = _roleManager.Roles.Where(a => a.Id == assignRoleToClaimsRequest.RoleId).FirstOrDefault();
-            var claimResult = _claimsService.GetById(assignRoleToClaimsRequest.ClaimId).Result.Claims.FirstOrDefault();
-            if (claimResult != null && role != null)
+            try
             {
-                var OldClaims = await _roleManager.GetClaimsAsync(role);
-
-                if (OldClaims.Where(a => a.Value == claimResult.Id.ToString()).Count() == 0)
+                if (ModelState.IsValid)
                 {
-                    var IsCreated = await _roleManager.AddClaimAsync(role, new Claim(claimResult.ActionName, claimResult.Id.ToString()));
-                    if (IsCreated.Succeeded)
+                    var role = _roleManager.Roles.Where(a => a.Id == assignRoleToClaimsRequest.RoleId).FirstOrDefault();
+
+                    if (role != null)
+                    {
+                        var OldClaims = await _roleManager.GetClaimsAsync(role);
+                        foreach (var item in OldClaims)
+                        {
+                            await _roleManager.RemoveClaimAsync(role, item);
+                        }
+
+                        foreach (var item in assignRoleToClaimsRequest.ClaimId)
+                        {
+                            var claimResult = _claimsService.GetById(item).Result.Claims.FirstOrDefault();
+                            await _roleManager.AddClaimAsync(role, new Claim(claimResult.ActionName, claimResult.Id.ToString()));
+                        }
                         return baseResponse.ToSuccess<BaseResponse>();
+
+                    }
                 }
-                return baseResponse.ToApiError<BaseResponse>();
+                return baseResponse.ToIncompleteInput<BaseResponse>();
             }
-            return baseResponse.ToIncompleteInput<BaseResponse>();
-        }
-        [HttpPost]
-        [Route("RemoveClaimsFromRole")]
-        [Authorize]
-        public async Task<BaseResponse> RemoveClaimsFromRole([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
-        {
-            BaseResponse baseResponse = new BaseResponse();
-            var role = _roleManager.Roles.Where(a => a.Id == assignRoleToClaimsRequest.RoleId).FirstOrDefault();
-            var claimResult = _claimsService.GetById(assignRoleToClaimsRequest.ClaimId).Result.Claims.FirstOrDefault();
-            var OldClaims = await _roleManager.GetClaimsAsync(role);
-            if (claimResult != null && role != null)
+            catch (Exception ex)
             {
-                var IsRemoved = await _roleManager.RemoveClaimAsync(role, new Claim(claimResult.ActionName, claimResult.Id.ToString()));
-                if (IsRemoved.Succeeded)
-                    return baseResponse.ToSuccess<BaseResponse>();
+                _logService.LogText(ex.Message);
                 return baseResponse.ToApiError<BaseResponse>();
             }
-            return baseResponse.ToIncompleteInput<BaseResponse>();
         }
+        //[HttpPost]
+        //[Route("RemoveClaimsFromRole")]
+        //[Authorize]
+        //public async Task<BaseResponse> RemoveClaimsFromRole([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
+        //{
+        //    BaseResponse baseResponse = new BaseResponse();
+        //    var role = _roleManager.Roles.Where(a => a.Id == assignRoleToClaimsRequest.RoleId).FirstOrDefault();
+        //    var claimResult = _claimsService.GetById(assignRoleToClaimsRequest.ClaimId).Result.Claims.FirstOrDefault();
+        //    var OldClaims = await _roleManager.GetClaimsAsync(role);
+        //    if (claimResult != null && role != null)
+        //    {
+        //        var IsRemoved = await _roleManager.RemoveClaimAsync(role, new Claim(claimResult.ActionName, claimResult.Id.ToString()));
+        //        if (IsRemoved.Succeeded)
+        //            return baseResponse.ToSuccess<BaseResponse>();
+        //        return baseResponse.ToApiError<BaseResponse>();
+        //    }
+        //    return baseResponse.ToIncompleteInput<BaseResponse>();
+        //}
         [HttpPost]
         [Route("GetUserClaims")]
         [Authorize]
@@ -323,5 +341,13 @@ namespace HealthESB.API.Controllers
         {
             return await _aspNetUserRolesService.getUserClaimsByUserIdAsync(User.Id);
         }
+        [HttpPost]
+        [Route("GetRoleClaims")]
+       // [Authorize]
+        public async Task<ClaimsResponse> GetRoleClaims([FromBody] RoleRequest role)
+        {
+            return await _aspNetUserRolesService.GetClaimsByRole(role.Id);
+        }
+
     }
 }

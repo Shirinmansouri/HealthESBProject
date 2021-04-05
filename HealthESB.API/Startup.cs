@@ -83,15 +83,12 @@ namespace HealthESB.API
             // For saving Token 
             //services.AddAuthentication("Bearer")
             //  .AddJwtBearer("Bearer", options => options.SaveToken = true);
-            //HttpContext.GetTokenAsync("Bearer", "access_token");
-
- 
+            //HttpContext.GetTokenAsync("Bearer", "access_token"); 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<HealthESBDbContext>()
                 .AddDefaultTokenProviders();
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
- 
             //                .AddEntityFrameworkStores<HealthESBDbContext>();
  
 

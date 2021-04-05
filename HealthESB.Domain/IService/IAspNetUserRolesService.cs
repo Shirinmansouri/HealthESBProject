@@ -12,5 +12,6 @@ namespace HealthESB.Domain.IService
         Task<RoleListResponse> getUserRolesByUserIdAsync(string UserId);
         Task<UserListResponse> getUsersAsync(ListDTO listDTO);
         Task<ClaimsResponse> getUserClaimsByUserIdAsync(string UserId);
+        Task<ClaimsResponse> GetClaimsByRole(string roleId);
     }
 }
