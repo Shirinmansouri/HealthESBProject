@@ -38,7 +38,7 @@ namespace HealthESB.API.Controllers
 
         [HttpPost]
         [Route("CreateUser")]
-        [Authorize]
+       // [Authorize]
         public async Task<AutResponse> CreateUser([FromBody] UserRegistrationRequest user)
         {
             AutResponse baseResponse = new AutResponse();
