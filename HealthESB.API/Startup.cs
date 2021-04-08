@@ -84,13 +84,13 @@ namespace HealthESB.API
             //services.AddAuthentication("Bearer")
             //  .AddJwtBearer("Bearer", options => options.SaveToken = true);
             //HttpContext.GetTokenAsync("Bearer", "access_token"); 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<HealthESBDbContext>()
-                .AddDefaultTokenProviders();
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<HealthESBDbContext>()
+            //    .AddDefaultTokenProviders();
 
-            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
-            //                .AddEntityFrameworkStores<HealthESBDbContext>();
- 
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
+                            .AddEntityFrameworkStores<HealthESBDbContext>();
+
 
             Constants.TTAC_BaseUrl = Configuration["TTAC:BaseUrl"];
             Constants.TTAC_UserName = Configuration["TTAC:UserName"];

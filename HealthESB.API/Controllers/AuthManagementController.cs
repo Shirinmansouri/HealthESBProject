@@ -21,6 +21,7 @@ namespace HealthESB.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [UserAccess]
     public class AuthManagementController : ControllerBase
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -41,7 +42,7 @@ namespace HealthESB.API.Controllers
 
         [HttpPost]
         [Route("CreateUser")]
-        // [Authorize]
+        [Authorize]
         public async Task<AutResponse> CreateUser([FromBody] UserRegistrationRequest user)
         {
             AutResponse baseResponse = new AutResponse();
@@ -281,7 +282,7 @@ namespace HealthESB.API.Controllers
         }
         [HttpPost]
         [Route("AssignRoleToClaims")]
-       // [Authorize]
+       [Authorize]
         public async Task<BaseResponse> AssignRoleToClaims([FromBody] AssignRoleToClaimsRequest assignRoleToClaimsRequest)
         {
             BaseResponse baseResponse = new BaseResponse();
@@ -336,14 +337,14 @@ namespace HealthESB.API.Controllers
         //}
         [HttpPost]
         [Route("GetUserClaims")]
-        [Authorize]
+        //[Authorize]
         public async Task<ClaimsResponse> GetUserClaims([FromBody] UserRow User)
         {
             return await _aspNetUserRolesService.getUserClaimsByUserIdAsync(User.Id);
         }
         [HttpPost]
         [Route("GetRoleClaims")]
-       // [Authorize]
+        [Authorize]
         public async Task<ClaimsResponse> GetRoleClaims([FromBody] RoleRequest role)
         {
             return await _aspNetUserRolesService.GetClaimsByRole(role.Id);

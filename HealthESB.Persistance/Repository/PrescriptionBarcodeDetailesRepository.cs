@@ -67,7 +67,8 @@ namespace HealthESB.Persistance.Repository
                            BasicInsurance = p.BasicInsurance,
                            ComplementaryInsurance = p.ComplementaryInsurance,
                            Uid = a.Uid,
-                           Amount = b.Amount
+                           Amount = b.Amount,
+                           OutPrescriptionId=p.OutPrescriptionId
                        }).AsQueryable();
             if (listDTO.Filter != null && listDTO.Filter != string.Empty)
                 lst = new LinqSearch().ApplyFilter(lst, listDTO.Filter);

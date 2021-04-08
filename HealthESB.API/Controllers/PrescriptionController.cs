@@ -13,7 +13,7 @@ namespace HealthESB.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
+    [UserAccess]
     public class PrescriptionController : ControllerBase
     {
         private readonly IPrescriptionService _prescriptionService;
@@ -23,7 +23,7 @@ namespace HealthESB.API.Controllers
         }
 
         [HttpPost("Create")]
-       // [Authorize]
+        [Authorize]
         public async Task<PrescriptionResponse> Create([FromBody] PrescriptionRequest prescriptionRequest)
         {
 

@@ -11,6 +11,7 @@ namespace HealthESB.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [UserAccess]
     public class PrescriptionBarcodeController : ControllerBase
     {
         private readonly IPrescriptionBarcodeService _prescriptionBarcodeService;
@@ -20,7 +21,7 @@ namespace HealthESB.API.Controllers
         }
 
         [HttpPost("Create")]
-       // [Authorize]
+        [Authorize]
         public async Task<PrescriptionBarcodeResponse> Create([FromBody] PrescriptionBarcodeRequest prescriptionBarcodeRequest)
         {
 
@@ -28,7 +29,7 @@ namespace HealthESB.API.Controllers
 
         }
         [HttpPost("ReActiveUid")]
-        //[Authorize]
+       [Authorize]
         public async Task<ReactiveResponse> ReActiveUid([FromBody] ReactiveRequest reactiveRequest)
         {
 
@@ -36,14 +37,14 @@ namespace HealthESB.API.Controllers
 
         }
         [HttpPost("ReActiveByPrescriptionId")]
-       //[Authorize]
+       [Authorize]
         public async Task<ReactiveResponse> ReActiveByPrescriptionId([FromBody] GroupReactiveRequest groupReactiveRequest)
         {
             return await _prescriptionBarcodeService.ReActivePrescriptionId(groupReactiveRequest.PrescriptionId);
 
         }
         [HttpPost("Confirm")]
-       // [Authorize]
+       [Authorize]
         public async Task<ConfirmResponse> confirm([FromBody] ConfirmRequest confirmRequest)
         {
 

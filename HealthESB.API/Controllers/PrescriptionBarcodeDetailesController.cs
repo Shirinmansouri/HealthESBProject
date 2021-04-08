@@ -14,6 +14,7 @@ namespace HealthESB.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [UserAccess]
     public class PrescriptionBarcodeDetailesController : ControllerBase
     {
         private readonly IPrescriptionBarcodeDetailesService _prescriptionBarcodeDetailesService;
