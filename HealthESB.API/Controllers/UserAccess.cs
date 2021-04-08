@@ -44,7 +44,7 @@ namespace HealthESB.API.Controllers
                 }
             }
 
-            if ((route.ToLower() == "/api/AuthManagement/Login") || (route.ToLower() == "/api/AuthManagement/GetUserClaims"))
+            if ((route.ToLower() == "/api/AuthManagement/Login") || (route.ToLower() == "/api/AuthManagement/GetUserClaims".ToLower()))
                 base.OnActionExecuting(filterContext);
             else
             {
