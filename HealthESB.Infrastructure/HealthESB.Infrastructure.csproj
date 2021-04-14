@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthESB.Framework.Utility\HealthESB.Framework.Utility.csproj" />
+    <ProjectReference Include="..\HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>

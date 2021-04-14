@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {}
+    "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {}
   },
   "projects": {
-    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {
+    "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj",
+        "projectUniqueName": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj",
         "projectName": "HealthESB.Framework.Utility",
-        "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj",
-        "packagesPath": "C:\\Users\\Shirin\\.nuget\\packages\\",
-        "outputPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\obj\\",
+        "projectPath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj",
+        "packagesPath": "C:\\Users\\asoMan\\.nuget\\packages\\",
+        "outputPath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framework.Utility\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Shirin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\asoMan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -44,6 +39,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -59,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

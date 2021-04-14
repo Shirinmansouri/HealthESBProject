@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.ApplicationInsights.AspNetCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
@@ -14,6 +17,24 @@ namespace HealthESB.Framework.Utility
         public static byte[] KeyAgent = ASCIIEncoding.ASCII.GetBytes("rvfnaped");
         public static byte[] KeyDESAC = ASCIIEncoding.ASCII.GetBytes("rsfnaded");
         public static byte[] KeyDESNMS = ASCIIEncoding.ASCII.GetBytes("rsfnaded");
+
+        public static object GetRequiredService(this IServiceProvider provider, Type serviceType)
+        {
+            var requiredServiceSupportingProvider = provider as ISupportRequiredService;
+            if (requiredServiceSupportingProvider != null)
+            {
+                return requiredServiceSupportingProvider.GetRequiredService(serviceType);
+            }
+
+            var service = provider.GetService(serviceType);
+            if (service == null)
+            {
+                throw new InvalidOperationException("");
+            }
+
+            return service;
+        }
+
         public static string CurrentTokenAC { get; set; }
         public static string CurrentTokenNMS { get; set; }
         public static string GetPersianDateTime(DateTime dt)
@@ -284,6 +305,23 @@ namespace HealthESB.Framework.Utility
                    {SupplyStatusCode.High, "High"},
                     {SupplyStatusCode.Medium, "Medium"},
          };
- 
+
+
+        public static TAttribute GetAttribute<TAttribute>(this Enum value)
+            where TAttribute : Attribute
+        {
+            var type = value.GetType();
+            var name = Enum.GetName(type, value);
+            return type.GetField(name) // I prefer to get attributes this way
+                .GetCustomAttributes(false)
+                .OfType<TAttribute>()
+                .SingleOrDefault();
+        }
+
+        public static string GetParentType(Enum value)
+        {
+            return value.GetAttribute<System.ComponentModel.DescriptionAttribute>().Description.ToString();
+        }
+
     }
 }

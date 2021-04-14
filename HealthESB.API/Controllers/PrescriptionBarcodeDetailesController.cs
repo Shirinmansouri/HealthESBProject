@@ -1,6 +1,7 @@
 ﻿using HealthESB.Domain.IService;
 using HealthESB.Domain.Model;
 using HealthESB.EF.DynamicFilter;
+using HealthESB.ElasticSearch.IContracts;
 using HealthESB.Framework.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,16 +19,19 @@ namespace HealthESB.API.Controllers
     public class PrescriptionBarcodeDetailesController : ControllerBase
     {
         private readonly IPrescriptionBarcodeDetailesService _prescriptionBarcodeDetailesService;
-        public PrescriptionBarcodeDetailesController(IPrescriptionBarcodeDetailesService prescriptionBarcodeDetailesService)
+        private readonly IElasticService _elasticService;
+        public PrescriptionBarcodeDetailesController(IPrescriptionBarcodeDetailesService prescriptionBarcodeDetailesService,
+                                                     IElasticService elasticService)
         {
             _prescriptionBarcodeDetailesService = prescriptionBarcodeDetailesService;
+            this._elasticService = elasticService;
         }
         [HttpPost("GetPrescriptionActivity")]
         [Authorize]
         public async Task<PrescriptionActivityListResponse> GetPrescriptionActivity([FromBody] ListDTO listDTO)
         {
-         
 
+            this._elasticService.testElastic();
             //SearchFilter searchFilter = new SearchFilter();
             //searchFilter.groupOp = new FilterEnum.GroupOpEnum();
             //searchFilter.groupOp = FilterEnum.GroupOpEnum.And;

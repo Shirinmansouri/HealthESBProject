@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HealthESB.Framework.Utility;
 using HealthESB.Infrastructure.Model;
+using HealthESB.RabbitMQ.IContract;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,22 +15,32 @@ namespace HealthESB.Infrastructure
 {
     public class TTAC
     {
-       public async Task<TTACPrescriptionResponse> CallPrescriptionApi(TTACPrescriptionRequest prescriptionRequest)
+        private readonly IRabbitMqService _rabbitMqService;
+        private readonly IServiceProvider _serviceProvider;
+        public TTAC(IServiceProvider serviceProvider)
+        {
+            this._serviceProvider = serviceProvider;
+            _rabbitMqService = (IRabbitMqService)this._serviceProvider.GetRequiredService(typeof(IRabbitMqService));
+        }
+        public async Task<TTACPrescriptionResponse> CallPrescriptionApi(TTACPrescriptionRequest prescriptionRequest)
         {
             var res = new TTACPrescriptionResponse();
-            var request = (HttpWebRequest)WebRequest.Create(Constants.TTAC_BaseUrl+Constants.TTAC_RegisterApiName);
+            var request = (HttpWebRequest)WebRequest.Create(Constants.TTAC_BaseUrl + Constants.TTAC_RegisterApiName);
             request.Method = "POST";
             //request.Headers.Add("X-SSP-Api-Key", "56c671ff-4cdf-4907-8e7d-3158fa7dec3e");
             request.Headers.Add("X-SSP-Api-Key", Constants.TTAC_RegisterApiKey);
             request.ContentType = @"application/json";
 
-             try  
+            try
             {
                 using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
                     streamWriter.Write(JsonConvert.SerializeObject(prescriptionRequest));
                 }
-                 var httpResponse =(HttpWebResponse)(await request.GetResponseAsync().ConfigureAwait(false));
+
+                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, JsonConvert.SerializeObject(request));
+                var httpResponse = (HttpWebResponse)(await request.GetResponseAsync().ConfigureAwait(false));
+                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, JsonConvert.SerializeObject(httpResponse));
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = await streamReader.ReadToEndAsync().ConfigureAwait(false);
@@ -45,10 +56,10 @@ namespace HealthESB.Infrastructure
                 res.ErrorMessage = HealthESBApiResponseMessages.ServiceProviderNotResponse;
             }
 
-            return   res;
+            return res;
 
         }
-       public async Task<TTACPrescriptionBarcodeResponse> CallCheckSingleBarcodeApi(TTACPrescriptionBarcodeRequest tTACPrescriptionBarcodeRequest)
+        public async Task<TTACPrescriptionBarcodeResponse> CallCheckSingleBarcodeApi(TTACPrescriptionBarcodeRequest tTACPrescriptionBarcodeRequest)
         {
             var res = new TTACPrescriptionBarcodeResponse();
             var request = (HttpWebRequest)WebRequest.Create(Constants.TTAC_BaseUrl + Constants.TTAC_CheckApiName);
@@ -67,7 +78,7 @@ namespace HealthESB.Infrastructure
                 {
                     var result = await streamReader.ReadToEndAsync().ConfigureAwait(false);
                     JObject jObject = JObject.Parse(result);
-                    res.ErrorCode =int.Parse(jObject["ErrorCode"]?.ToString() ?? "-1");
+                    res.ErrorCode = int.Parse(jObject["ErrorCode"]?.ToString() ?? "-1");
                     res.ErrorMessage = jObject["ErrorMessage"]?.ToString() ?? "";
                     res.PrescriptionId = int.Parse(jObject["PrescriptionId"]?.ToString() ?? "0");
                     if (jObject["ItemsInfo"].ToString() != "[]")
@@ -76,7 +87,7 @@ namespace HealthESB.Infrastructure
                         JToken jInfo = jObject["ItemsInfo"];
                         for (int i = 0; i < jInfo.Count(); i++)
                         {
-                           
+
                             TTACPrescriptionBarcodeDetailesResponse tTACPrescriptionBarcodeDetailesResponse = new TTACPrescriptionBarcodeDetailesResponse();
                             tTACPrescriptionBarcodeDetailesResponse.EnglishName = jInfo[i]["EnglishName"] == null ? "" : jInfo[0]["EnglishName"].ToString();
                             tTACPrescriptionBarcodeDetailesResponse.GenericCode = jInfo[i]["GenericCode"] == null ? "" : jInfo[0]["GenericCode"].ToString();
@@ -92,7 +103,7 @@ namespace HealthESB.Infrastructure
                             tTACPrescriptionBarcodeDetailesResponse.Uid = jInfo[0]["Uid"] == null ? "" : jInfo[0]["BarcodeUid"].ToString();
                             res.ItemsInfo.Add(tTACPrescriptionBarcodeDetailesResponse);
                         }
-                        
+
                     }
                 }
             }
@@ -143,8 +154,8 @@ namespace HealthESB.Infrastructure
                             tTACPrescriptionBarcodeDetailesResponse.StatusMessage = jInfo[i]["StatusMessage"] == null ? "" : jInfo[0]["StatusMessage"].ToString();
                             tTACPrescriptionBarcodeDetailesResponse.ProductType = jInfo[i]["ProductType"] == null ? "" : jInfo[0]["ProductType"].ToString();
                             tTACPrescriptionBarcodeDetailesResponse.ProductTypeId = int.Parse(jInfo[i]["ProductTypeId"] == null ? "0" : jInfo[0]["ProductTypeId"].ToString());
-                            tTACPrescriptionBarcodeDetailesResponse.Price =int.Parse( jInfo[i]["Price"] == null ? "0" : jInfo[0]["Price"].ToString());
-                            tTACPrescriptionBarcodeDetailesResponse.TrackingCode =int.Parse( jInfo[i]["TrackingCode"] == null ? "0" : jInfo[0]["TrackingCode"].ToString());
+                            tTACPrescriptionBarcodeDetailesResponse.Price = int.Parse(jInfo[i]["Price"] == null ? "0" : jInfo[0]["Price"].ToString());
+                            tTACPrescriptionBarcodeDetailesResponse.TrackingCode = int.Parse(jInfo[i]["TrackingCode"] == null ? "0" : jInfo[0]["TrackingCode"].ToString());
                             tTACPrescriptionBarcodeDetailesResponse.BarcodeUid = jInfo[0]["BarcodeUid"] == null ? "" : jInfo[0]["BarcodeUid"].ToString();
                             tTACPrescriptionBarcodeDetailesResponse.Uid = jInfo[0]["Uid"] == null ? "" : jInfo[0]["BarcodeUid"].ToString();
                             res.ItemsInfo.Add(tTACPrescriptionBarcodeDetailesResponse);

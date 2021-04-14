@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj": {}
+    "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj": {}
   },
   "projects": {
-    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj": {
+    "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj",
+        "projectUniqueName": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj",
         "projectName": "HealthESB.Framework.Logger",
-        "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj",
-        "packagesPath": "C:\\Users\\Shirin\\.nuget\\packages\\",
-        "outputPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framwork.Logger\\obj\\",
+        "projectPath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj",
+        "packagesPath": "C:\\Users\\asoMan\\.nuget\\packages\\",
+        "outputPath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framwork.Logger\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Shirin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\asoMan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -69,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

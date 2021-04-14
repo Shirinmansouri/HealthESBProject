@@ -23,6 +23,10 @@ using HealthESB.Framework.DependecyConfig;
 using Microsoft.AspNetCore.Http;
 using static HealthESB.API.Configuration.RequestResponseLoggingMiddleware;
 using System.Diagnostics;
+using HealthESB.ElasticSearch.IContracts;
+using HealthESB.ElasticSearch.Implmentation;
+using HealthESB.RabbitMQ.IContract;
+using HealthESB.RabbitMQ.Implementation;
 
 namespace HealthESB.API
 {
@@ -90,8 +94,10 @@ namespace HealthESB.API
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
                             .AddEntityFrameworkStores<HealthESBDbContext>();
+            services.AddScoped<IElasticService, ElasticService>();
+            services.AddScoped<IRabbitMqService, RabbitMqService>();
 
-
+            services.AddSingleton<IConfiguration>(Configuration);
             Constants.TTAC_BaseUrl = Configuration["TTAC:BaseUrl"];
             Constants.TTAC_UserName = Configuration["TTAC:UserName"];
             Constants.TTAC_Password = Configuration["TTAC:Password"];

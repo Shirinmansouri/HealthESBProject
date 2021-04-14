@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "JB86+5QRQ2rbK6omFDAbnGLFovuufIolrnTIHkBVILIn5Q59abFf0G4+ZUJS8RZ5zElm7VjM9GiAzlkCpymU8Q==",
+  "success": true,
+  "projectFilePath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.ElasticSearch\\HealthESB.ElasticSearch.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

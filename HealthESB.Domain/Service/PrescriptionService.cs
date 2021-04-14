@@ -19,10 +19,15 @@ namespace HealthESB.Domain.Service
     {
         private ILogService _logService;
         private IPrescriptionRepository _PrescriptionRepository;
-        public PrescriptionService(IPrescriptionRepository prescriptionRepository ,ILogService logService)
+        private IServiceProvider _serviceProvider;
+        public PrescriptionService(
+            IPrescriptionRepository prescriptionRepository ,
+            ILogService logService,
+            IServiceProvider serviceProvider)
         {
             _logService = logService;
             _PrescriptionRepository = prescriptionRepository;
+            this._serviceProvider = serviceProvider;
         }
 
         public async Task<PrescriptionResponse> Create(PrescriptionRequest prescriptionRequest)
@@ -30,7 +35,7 @@ namespace HealthESB.Domain.Service
             var response = new PrescriptionResponse();
             try
             {
-                TTAC tTAC = new TTAC();
+                TTAC tTAC = new TTAC(this._serviceProvider);
                 Prescription prescription = new Prescription();
                 prescriptionRequest.CopyPropertiesTo(prescription);
                 await _PrescriptionRepository.Add(prescription);

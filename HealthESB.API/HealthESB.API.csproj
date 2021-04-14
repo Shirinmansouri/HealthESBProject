@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HealthESB.Domain\HealthESB.Domain.csproj" />
     <ProjectReference Include="..\HealthESB.EF\HealthESB.EF.csproj" />
+    <ProjectReference Include="..\HealthESB.ElasticSearch\HealthESB.ElasticSearch.csproj" />
     <ProjectReference Include="..\HealthESB.Framwork.DependecyConfig\HealthESB.Framework.DependecyConfig.csproj" />
   </ItemGroup>
 

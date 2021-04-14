@@ -5,21 +5,25 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{9AC14E38-1864-4048-86FC-D5BA557171D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Framework.DependecyConfig", "HealthESB.Framwork.DependecyConfig\HealthESB.Framework.DependecyConfig.csproj", "{0AED8A13-2779-40EF-BCE7-18F01E61C6C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Framework.DependecyConfig", "HealthESB.Framwork.DependecyConfig\HealthESB.Framework.DependecyConfig.csproj", "{0AED8A13-2779-40EF-BCE7-18F01E61C6C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Framework.Logger", "HealthESB.Framwork.Logger\HealthESB.Framework.Logger.csproj", "{BE121862-66ED-45F5-955A-3F390A12CF1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Framework.Logger", "HealthESB.Framwork.Logger\HealthESB.Framework.Logger.csproj", "{BE121862-66ED-45F5-955A-3F390A12CF1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Framework.Utility", "HealthESB.Framework.Utility\HealthESB.Framework.Utility.csproj", "{E42AFBA5-6D23-4892-82E9-49078A4BB43C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Framework.Utility", "HealthESB.Framework.Utility\HealthESB.Framework.Utility.csproj", "{E42AFBA5-6D23-4892-82E9-49078A4BB43C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.EF", "HealthESB.EF\HealthESB.EF.csproj", "{32A99B15-3F67-478E-977D-EB2AD9339284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.EF", "HealthESB.EF\HealthESB.EF.csproj", "{32A99B15-3F67-478E-977D-EB2AD9339284}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Infrastructure", "HealthESB.Infrastructure\HealthESB.Infrastructure.csproj", "{8D273224-7FF7-46BD-B958-E691816103EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Infrastructure", "HealthESB.Infrastructure\HealthESB.Infrastructure.csproj", "{8D273224-7FF7-46BD-B958-E691816103EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Domain", "HealthESB.Domain\HealthESB.Domain.csproj", "{34DA90A0-DB22-46CB-A068-D84EAB0512EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Domain", "HealthESB.Domain\HealthESB.Domain.csproj", "{34DA90A0-DB22-46CB-A068-D84EAB0512EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Persistance", "HealthESB.Persistance\HealthESB.Persistance.csproj", "{66AF63A3-C88B-424A-9EF5-DA2181A7896F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Persistance", "HealthESB.Persistance\HealthESB.Persistance.csproj", "{66AF63A3-C88B-424A-9EF5-DA2181A7896F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.API", "HealthESB.API\HealthESB.API.csproj", "{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.API", "HealthESB.API\HealthESB.API.csproj", "{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.RabbitMQ", "HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj", "{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.ElasticSearch", "HealthESB.ElasticSearch\HealthESB.ElasticSearch.csproj", "{4160844B-E78F-410F-B764-699418001F12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,14 @@ Global
 		{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4160844B-E78F-410F-B764-699418001F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4160844B-E78F-410F-B764-699418001F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4160844B-E78F-410F-B764-699418001F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4160844B-E78F-410F-B764-699418001F12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

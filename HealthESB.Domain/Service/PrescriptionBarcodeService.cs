@@ -20,12 +20,18 @@ namespace HealthESB.Domain.Service
         private IPrescriptionBarcodeRepository _prescriptionBarcodeRepository;
         private IPrescriptionBarcodeDetailesRepository _prescriptionBarcodeDetailesRepository;
         private ILogService _logService;
-        public PrescriptionBarcodeService(IPrescriptionRepository prescriptionRepository, IPrescriptionBarcodeRepository prescriptionBarcodeRepository, ILogService logService, IPrescriptionBarcodeDetailesRepository prescriptionBarcodeDetailesRepository)
+        private IServiceProvider _serviceProvider;
+        public PrescriptionBarcodeService(IPrescriptionRepository prescriptionRepository, 
+            IPrescriptionBarcodeRepository prescriptionBarcodeRepository, 
+            ILogService logService,
+            IPrescriptionBarcodeDetailesRepository prescriptionBarcodeDetailesRepository,
+            IServiceProvider serviceProvider)
         {
             _prescriptionBarcodeRepository = prescriptionBarcodeRepository;
             _logService = logService;
             _prescriptionBarcodeDetailesRepository = prescriptionBarcodeDetailesRepository;
             _prescriptionRepository = prescriptionRepository;
+            _serviceProvider = serviceProvider;
 
         }
 
@@ -45,7 +51,7 @@ namespace HealthESB.Domain.Service
 
                 if (string.IsNullOrEmpty(prescriptionBarcodeRequest.ReCheckCode)) prescriptionBarcodeRequest.ReCheckCode = Guid.NewGuid().ToString();
 
-                TTAC tTAC = new TTAC();
+                TTAC tTAC = new TTAC(_serviceProvider);
                 PrescriptionBarcode prescriptionBarcode = new PrescriptionBarcode();
                 prescriptionBarcodeRequest.CopyPropertiesTo(prescriptionBarcode);
                 var result = await _prescriptionRepository.FirstOrDefault(a => a.OutPrescriptionId == prescriptionBarcodeRequest.PrescriptionId);
@@ -117,7 +123,7 @@ namespace HealthESB.Domain.Service
                 if (string.IsNullOrEmpty(reactiveRequest.BarcodeUid) || string.IsNullOrEmpty(reactiveRequest.PharmacyGln) || reactiveRequest.Amount == 0 || reactiveRequest.TrackingCode == 0)
                     return response.ToIncompleteInput<ReactiveResponse>();
 
-                TTAC tTAC = new TTAC();
+                TTAC tTAC = new TTAC(_serviceProvider);
 
                 var result = await _prescriptionBarcodeDetailesRepository.FirstOrDefault(a => a.TrackingCode == reactiveRequest.TrackingCode && a.BarcodeUid == reactiveRequest.BarcodeUid);
                 if (result == null)
@@ -201,7 +207,7 @@ namespace HealthESB.Domain.Service
                 if (PrescriptionId == 0)
                     return response.ToIncompleteInput<ReactiveResponse>();
 
-                TTAC tTAC = new TTAC();
+                TTAC tTAC = new TTAC(_serviceProvider);
                 var result = await _prescriptionBarcodeDetailesRepository.GetWhere(a => a.PrescriptionBarcode.PrescriptionId == PrescriptionId
                 && a.Status == 0);
                 if (result == null)

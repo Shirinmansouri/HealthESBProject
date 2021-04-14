@@ -10,3 +10,15 @@ C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\Healt
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\ref\HealthESB.Framework.Logger.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.pdb
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.csprojAssemblyReference.cache
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\bin\Debug\net5.0\HealthESB.Framework.Logger.deps.json
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\bin\Debug\net5.0\HealthESB.Framework.Logger.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\bin\Debug\net5.0\ref\HealthESB.Framework.Logger.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\bin\Debug\net5.0\HealthESB.Framework.Logger.pdb
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.csprojAssemblyReference.cache
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.GeneratedMSBuildEditorConfig.editorconfig
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.AssemblyInfoInputs.cache
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.AssemblyInfo.cs
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.csproj.CoreCompileInputs.cache
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\ref\HealthESB.Framework.Logger.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.pdb
