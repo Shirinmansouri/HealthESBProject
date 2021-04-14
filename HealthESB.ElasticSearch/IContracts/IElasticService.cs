@@ -6,6 +6,6 @@ namespace HealthESB.ElasticSearch.IContracts
 {
     public interface IElasticService
     {
-        void testElastic();
+        System.Threading.Tasks.Task testElasticAsync(string Id);
     }
 }

@@ -46,3 +46,6 @@ C:\healthESB\Core\HealthESBProject\HealthESB.EF\obj\Debug\net5.0\HealthESB.EF.dl
 C:\healthESB\Core\HealthESBProject\HealthESB.EF\obj\Debug\net5.0\ref\HealthESB.EF.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.EF\obj\Debug\net5.0\HealthESB.EF.pdb
 C:\healthESB\Core\HealthESBProject\HealthESB.EF\obj\Debug\net5.0\HealthESB.EF.genruntimeconfig.cache
+C:\healthESB\Core\HealthESBProject\HealthESB.EF\bin\Debug\net5.0\HealthESB.RabbitMQ.exe
+C:\healthESB\Core\HealthESBProject\HealthESB.EF\bin\Debug\net5.0\HealthESB.RabbitMQ.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.EF\bin\Debug\net5.0\HealthESB.RabbitMQ.pdb

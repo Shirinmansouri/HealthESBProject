@@ -31,7 +31,7 @@ namespace HealthESB.API.Controllers
         public async Task<PrescriptionActivityListResponse> GetPrescriptionActivity([FromBody] ListDTO listDTO)
         {
 
-            this._elasticService.testElastic();
+           await this._elasticService.testElasticAsync("GGUr0ngBLYLYFfde9PBQ");
             //SearchFilter searchFilter = new SearchFilter();
             //searchFilter.groupOp = new FilterEnum.GroupOpEnum();
             //searchFilter.groupOp = FilterEnum.GroupOpEnum.And;

@@ -44,3 +44,6 @@ C:\healthESB\Core\HealthESBProject\HealthESB.Persistance\obj\Debug\net5.0\Health
 C:\healthESB\Core\HealthESBProject\HealthESB.Persistance\obj\Debug\net5.0\HealthESB.Persistance.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Persistance\obj\Debug\net5.0\ref\HealthESB.Persistance.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Persistance\obj\Debug\net5.0\HealthESB.Persistance.pdb
+C:\healthESB\Core\HealthESBProject\HealthESB.Persistance\bin\Debug\net5.0\HealthESB.RabbitMQ.exe
+C:\healthESB\Core\HealthESBProject\HealthESB.Persistance\bin\Debug\net5.0\HealthESB.RabbitMQ.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.Persistance\bin\Debug\net5.0\HealthESB.RabbitMQ.pdb

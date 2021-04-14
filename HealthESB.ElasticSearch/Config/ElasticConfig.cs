@@ -6,7 +6,7 @@ namespace HealthESB.ElasticSearch.Config
 {
     public class ElasticConfig
     {
-        public static readonly string index = "logindex";
+        public static readonly string index = "logindex/default/";
 
     }
 }

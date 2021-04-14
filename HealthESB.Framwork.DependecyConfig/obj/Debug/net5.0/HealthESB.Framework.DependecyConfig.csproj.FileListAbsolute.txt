@@ -54,3 +54,6 @@ C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.DependecyConfig\obj\Debug\
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.DependecyConfig\obj\Debug\net5.0\ref\HealthESB.Framework.DependecyConfig.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.DependecyConfig\obj\Debug\net5.0\HealthESB.Framework.DependecyConfig.pdb
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.DependecyConfig\obj\Debug\net5.0\HealthESB.Framework.DependecyConfig.genruntimeconfig.cache
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.DependecyConfig\bin\Debug\net5.0\HealthESB.RabbitMQ.exe
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.DependecyConfig\bin\Debug\net5.0\HealthESB.RabbitMQ.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.DependecyConfig\bin\Debug\net5.0\HealthESB.RabbitMQ.pdb

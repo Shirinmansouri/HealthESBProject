@@ -2235,6 +2235,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "HealthESB.RabbitMQ": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0"
         },
         "compile": {

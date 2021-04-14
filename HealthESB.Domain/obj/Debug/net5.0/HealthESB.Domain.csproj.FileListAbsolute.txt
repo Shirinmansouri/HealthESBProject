@@ -36,3 +36,6 @@ C:\healthESB\Core\HealthESBProject\HealthESB.Domain\obj\Debug\net5.0\HealthESB.D
 C:\healthESB\Core\HealthESBProject\HealthESB.Domain\obj\Debug\net5.0\HealthESB.Domain.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Domain\obj\Debug\net5.0\ref\HealthESB.Domain.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Domain\obj\Debug\net5.0\HealthESB.Domain.pdb
+C:\healthESB\Core\HealthESBProject\HealthESB.Domain\bin\Debug\net5.0\HealthESB.RabbitMQ.exe
+C:\healthESB\Core\HealthESBProject\HealthESB.Domain\bin\Debug\net5.0\HealthESB.RabbitMQ.dll
+C:\healthESB\Core\HealthESBProject\HealthESB.Domain\bin\Debug\net5.0\HealthESB.RabbitMQ.pdb
