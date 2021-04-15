@@ -7,7 +7,7 @@ namespace HealthESB.RabbitMQ.Config
 {
     public enum RabbitQueue
     {
-        [Description("Inbox")]
-        Inbox
+        [Description("ElasticLogs")]
+        ElasticLogs
     }
 }

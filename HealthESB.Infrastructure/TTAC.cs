@@ -37,10 +37,7 @@ namespace HealthESB.Infrastructure
                 {
                     streamWriter.Write(JsonConvert.SerializeObject(prescriptionRequest));
                 }
-
-                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, JsonConvert.SerializeObject(request));
                 var httpResponse = (HttpWebResponse)(await request.GetResponseAsync().ConfigureAwait(false));
-                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, JsonConvert.SerializeObject(httpResponse));
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = await streamReader.ReadToEndAsync().ConfigureAwait(false);

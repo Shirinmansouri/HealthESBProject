@@ -1,0 +1,115 @@
+2021-04-15 12:35:22 [INFO]<1> [] ====================================================================
+2021-04-15 12:35:22 [INFO]<1> [] Application Starts. Version: 1.0.0.0
+2021-04-15 12:35:22 [INFO]<1> [] Application Directory: C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\bin\Debug\net5.0\
+2021-04-15 12:35:25 [INFO]<1> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:25.4458544-07:00"
+2021-04-15 12:35:26 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:26.5586603-07:00"
+2021-04-15 12:35:27 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:27.5742969-07:00"
+2021-04-15 12:35:28 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:28.5838136-07:00"
+2021-04-15 12:35:29 [INFO]<5> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:29.6048435-07:00"
+2021-04-15 12:35:30 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:30.6202569-07:00"
+2021-04-15 12:35:31 [INFO]<5> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:31.6249108-07:00"
+2021-04-15 12:35:32 [INFO]<5> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:32.6289145-07:00"
+2021-04-15 12:35:33 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:33.6368597-07:00"
+2021-04-15 12:35:34 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:34.6490119-07:00"
+2021-04-15 12:35:35 [INFO]<5> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:35.6606073-07:00"
+2021-04-15 12:35:36 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:36.6753404-07:00"
+2021-04-15 12:35:37 [INFO]<4> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:37.6935061-07:00"
+2021-04-15 12:35:38 [INFO]<5> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T12:35:38.7249468-07:00"
+2021-04-15 12:35:38 [INFO]<4> [HealthESB.WindowsWorker.Worker] Disposing Service
+2021-04-15 12:35:38 [INFO]<1> [] ====================================================================
+
+2021-04-15 14:45:02 [INFO]<1> [] ====================================================================
+2021-04-15 14:45:03 [INFO]<1> [] Application Starts. Version: 1.0.0.0
+2021-04-15 14:45:03 [INFO]<1> [] Application Directory: C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\bin\Debug\net5.0\
+2021-04-15 14:45:06 [FATL]<1> [] Application terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.Hosting.IHostedService Lifetime: Singleton ImplementationType: HealthESB.WindowsWorker.Worker': Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.Hosting.IHostedService Lifetime: Singleton ImplementationType: HealthESB.WindowsWorker.Worker': Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.
+ ---> System.InvalidOperationException: Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitScopeCache(ServiceCallSite scopedCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitConstructor(ConstructorCallSite constructorCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitRootCache(ServiceCallSite singletonCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateCallSite(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.Microsoft.Extensions.DependencyInjection.ServiceLookup.IServiceProviderEngineCallback.OnCreate(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at HealthESB.WindowsWorker.Program.Main(String[] args) in C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\Program.cs:line 39
+2021-04-15 14:45:06 [INFO]<1> [] ====================================================================
+
+2021-04-15 14:58:14 [INFO]<1> [] ====================================================================
+2021-04-15 14:58:15 [INFO]<1> [] Application Starts. Version: 1.0.0.0
+2021-04-15 14:58:15 [INFO]<1> [] Application Directory: C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\bin\Debug\net5.0\
+2021-04-15 14:58:15 [FATL]<1> [] Application terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.Hosting.IHostedService Lifetime: Singleton ImplementationType: HealthESB.WindowsWorker.Worker': Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.Hosting.IHostedService Lifetime: Singleton ImplementationType: HealthESB.WindowsWorker.Worker': Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.
+ ---> System.InvalidOperationException: Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitScopeCache(ServiceCallSite scopedCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitConstructor(ConstructorCallSite constructorCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitRootCache(ServiceCallSite singletonCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateCallSite(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.Microsoft.Extensions.DependencyInjection.ServiceLookup.IServiceProviderEngineCallback.OnCreate(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at HealthESB.WindowsWorker.Program.Main(String[] args) in C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\Program.cs:line 39
+2021-04-15 14:58:16 [INFO]<1> [] ====================================================================
+
+2021-04-15 14:58:52 [INFO]<1> [] ====================================================================
+2021-04-15 14:58:52 [INFO]<1> [] Application Starts. Version: 1.0.0.0
+2021-04-15 14:58:52 [INFO]<1> [] Application Directory: C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\bin\Debug\net5.0\
+2021-04-15 14:58:53 [FATL]<1> [] Application terminated unexpectedly
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.Hosting.IHostedService Lifetime: Singleton ImplementationType: HealthESB.WindowsWorker.Worker': Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.Hosting.IHostedService Lifetime: Singleton ImplementationType: HealthESB.WindowsWorker.Worker': Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.
+ ---> System.InvalidOperationException: Cannot consume scoped service 'HealthESB.WindowsWorker.Services.Rabbit.IRabbitService' from singleton 'Microsoft.Extensions.Hosting.IHostedService'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitScopeCache(ServiceCallSite scopedCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitConstructor(ConstructorCallSite constructorCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.VisitRootCache(ServiceCallSite singletonCallSite, CallSiteValidatorState state)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteValidator.ValidateCallSite(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.Microsoft.Extensions.DependencyInjection.ServiceLookup.IServiceProviderEngineCallback.OnCreate(ServiceCallSite callSite)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, IServiceProviderEngine engine, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at HealthESB.WindowsWorker.Program.Main(String[] args) in C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\Program.cs:line 39
+2021-04-15 14:58:53 [INFO]<1> [] ====================================================================
+
+2021-04-15 15:00:17 [INFO]<1> [] ====================================================================
+2021-04-15 15:00:17 [INFO]<1> [] Application Starts. Version: 1.0.0.0
+2021-04-15 15:00:17 [INFO]<1> [] Application Directory: C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\bin\Debug\net5.0\
+2021-04-15 15:00:18 [INFO]<1> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T15:00:18.9192438-07:00"
+2021-04-15 15:50:18 [INFO]<1> [] ====================================================================
+2021-04-15 15:50:18 [INFO]<1> [] Application Starts. Version: 1.0.0.0
+2021-04-15 15:50:18 [INFO]<1> [] Application Directory: C:\healthESB\Core\HealthESBProject\HealthESB.WindowsWorker\bin\Debug\net5.0\
+2021-04-15 15:50:19 [INFO]<1> [HealthESB.WindowsWorker.Worker] Worker running at: "2021-04-15T15:50:19.9862155-07:00"

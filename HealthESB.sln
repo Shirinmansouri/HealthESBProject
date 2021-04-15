@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Persistance", "He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.API", "HealthESB.API\HealthESB.API.csproj", "{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.RabbitMQ", "HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj", "{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.RabbitMQ", "HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj", "{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.ElasticSearch", "HealthESB.ElasticSearch\HealthESB.ElasticSearch.csproj", "{4160844B-E78F-410F-B764-699418001F12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.ElasticSearch", "HealthESB.ElasticSearch\HealthESB.ElasticSearch.csproj", "{4160844B-E78F-410F-B764-699418001F12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.WindowsWorker", "HealthESB.WindowsWorker\HealthESB.WindowsWorker.csproj", "{6900CD33-3C89-47FB-A013-7210812041AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{4160844B-E78F-410F-B764-699418001F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4160844B-E78F-410F-B764-699418001F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4160844B-E78F-410F-B764-699418001F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6900CD33-3C89-47FB-A013-7210812041AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6900CD33-3C89-47FB-A013-7210812041AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6900CD33-3C89-47FB-A013-7210812041AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6900CD33-3C89-47FB-A013-7210812041AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

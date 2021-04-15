@@ -25,9 +25,9 @@ namespace HealthESB.ElasticSearch.Implmentation
         public async System.Threading.Tasks.Task testElasticAsync(string Id)
         {
             var requrest=  (HttpWebRequest)WebRequest.Create(baseUri+ ElasticConfig.index+ Id);
-            this._rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, "hello elastic");
+            this._rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.ElasticLogs, "test elastic");
             var response =  (HttpWebResponse)(await requrest.GetResponseAsync().ConfigureAwait(true));
-            this._rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, "get Response elastic");
+            this._rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.ElasticLogs, "test elastic");
         }
     }
 }
