@@ -23,6 +23,13 @@ using HealthESB.Framework.DependecyConfig;
 using Microsoft.AspNetCore.Http;
 using static HealthESB.API.Configuration.RequestResponseLoggingMiddleware;
 using System.Diagnostics;
+using HealthESB.ElasticSearch.IContracts;
+using HealthESB.ElasticSearch.Implmentation;
+using HealthESB.RabbitMQ.IContract;
+using HealthESB.RabbitMQ.Implementation;
+using HealthESB.Domain.Model.Configuration;
+using Hangfire;
+using Newtonsoft.Json;
 
 namespace HealthESB.API
 {
@@ -55,9 +62,17 @@ namespace HealthESB.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HealthESB.API", Version = "v1" });
             });
             services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+            services.Configure<CacheConfiguration>(Configuration.GetSection("CacheConfiguration"));
+            services.AddMemoryCache();
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHangfireServer();
             services.AddDbContext<HealthESBDbContext>(options => options.UseSqlServer(
                Configuration["ConnectionStrings:DefaultConnection"],
-               optionsBuilder => optionsBuilder.MigrationsAssembly("HealthESB.API")));
+               optionsBuilder => optionsBuilder.MigrationsAssembly("HealthESB.API")), ServiceLifetime.Singleton);
+
+
+          
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -90,8 +105,10 @@ namespace HealthESB.API
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>()
                             .AddEntityFrameworkStores<HealthESBDbContext>();
+            services.AddScoped<IElasticService, ElasticService>();
+            services.AddScoped<IRabbitMqService, RabbitMqService>();
 
-
+            services.AddSingleton<IConfiguration>(Configuration);
             Constants.TTAC_BaseUrl = Configuration["TTAC:BaseUrl"];
             Constants.TTAC_UserName = Configuration["TTAC:UserName"];
             Constants.TTAC_Password = Configuration["TTAC:Password"];
@@ -116,12 +133,14 @@ namespace HealthESB.API
 
                 app.UseCors("CorsPolicy");
             }
+            app.UseCors("CorsPolicy");
             void RequestResponseHandler(RequestProfilerModel requestProfilerModel)
             {
                 Debug.Print(requestProfilerModel.Request);
                 Debug.Print(Environment.NewLine);
                 Debug.Print(requestProfilerModel.Response);
             }
+            app.UseHangfireDashboard("/jobs");
             app.UseMiddleware<RequestResponseLoggingMiddleware>((Action<RequestProfilerModel>)RequestResponseHandler);
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseAuthentication();

@@ -55,9 +55,21 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.7.22, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.3, )"
+            },
+            "System.Data.Entity.Repository": {
+              "target": "Package",
+              "version": "[2.0.0.1, )"
+            },
+            "System.Runtime.Caching": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
@@ -71,6 +83,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -215,6 +230,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -334,6 +359,12 @@
             "projectReferences": {
               "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {
                 "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj"
+              },
+              "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj": {
+                "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framwork.Logger\\HealthESB.Framework.Logger.csproj"
+              },
+              "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj": {
+                "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj"
               }
             }
           }
@@ -348,9 +379,21 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.11.7, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.12, )"
             }
           },
           "imports": [
@@ -433,6 +476,79 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj",
+        "projectName": "HealthESB.RabbitMQ",
+        "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj",
+        "packagesPath": "C:\\Users\\Shirin\\.nuget\\packages\\",
+        "outputPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Shirin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {
+                "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -22,7 +22,56 @@ namespace HealthESB.Framework.Utility
         public static int TokenExpirationHours;
         public static string TokenKey;
         public static string  LoginUserId;
+ 
       
+    }
+    public enum AvihangResponseCode
+    {
+        Success=1,
+        TokenExpired=112,
+        SessionExpired=122,
+        CitizenSessionExpired=132
+    }
+    public enum TokenState 
+    {
+        Empty = 0,
+        NearExpire = 1,
+        Expired = 2,
+        Ok = 3
+
+    }
+    public enum SessionState
+    {
+        Empty = 0,
+        NearExpire = 1,
+        Expired = 2,
+        Ok = 3
+
+    }
+    public enum AvihangApis
+    {
+        Token=4,
+        InternalUserSession=5,
+        CitizenSession=6,
+        SamadGenerate=7,
+        PrescriptionSave=8,
+        Subscriptionorder=9
+
+    }
+    public enum CacheTech
+    {
+        Redis,
+        Memory
+    }
+    public enum ChannelType
+    {
+        Rest,
+        Soap
+    }
+    public enum ProviderType
+    {
+        TTAC=1,
+        Avihang=2
     }
     public enum HealthESBApiResponseCode
     {
@@ -60,6 +109,7 @@ namespace HealthESB.Framework.Utility
         RegisterBarcodeItems = 1,
         ReActiveBarcodeItems= 2 
     }
+   
     public static class HealthESBApiResponseMessages
     {
         public static string Sucsses { get { return "عملیات با موفقیت انجام شد"; } }
@@ -82,4 +132,5 @@ namespace HealthESB.Framework.Utility
         public static string InvalidUserNameOrPassword { get { return "نام کاربری یا کلمه عبور اشتباه می باشد"; } }
 
     }
+    
 }

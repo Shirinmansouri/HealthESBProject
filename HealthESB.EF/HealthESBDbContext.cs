@@ -30,8 +30,21 @@ namespace HealthESB.EF
         public DbSet<PrescriptionBarcodeStatus> PrescriptionBarcodeStatus { get; set; }
         public DbSet<PrescriptionBarcodeDetailesType> PrescriptionBarcodeDetailesType { get; set; }
         public DbSet<Claims> Claims { get; set; }
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
-            {
+        public DbSet<Providers> Providers { get; set; }
+        public DbSet<ProviderApis> ProviderApis { get; set; }
+        public DbSet<AvihangUserSessions> AvihangUserSessions { get; set; }
+        public DbSet<AvihangUserInfo> AvihangUserInfos { get; set; }
+        public DbSet<AvihangTokens> AvihangTokens { get; set; }
+        public DbSet<AvihangSubsciptions> AvihangSubsciptions { get; set; }
+        public DbSet<AvihangSnackMessage> AvihangSnackMessages { get; set; }
+        public DbSet<AvihangSamads> AvihangSamads { get; set; }
+        public DbSet<AvihangPrescriptionSubscriptions> AvihangPrescriptionSubscriptions { get; set; }
+        public DbSet<AvihangPrescriptions> AvihangPrescriptions { get; set; }
+        public DbSet<AvihangPersonInfo> AvihangPersonInfos { get; set; }
+        public DbSet<AvihangCitizenSessions> AvihangCitizenSessions { get; set; }
+
+         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        {
             try
             {
                 var modifiedEntries = this.ChangeTracker.Entries();
@@ -40,7 +53,7 @@ namespace HealthESB.EF
                 {
                     IAuditableEntity entity = entry.Entity as IAuditableEntity;
                     if (entity != null)
-                    {                    
+                    {
                         DateTime now = DateTime.Now;
                         if (entry.State == EntityState.Added)
                         {
