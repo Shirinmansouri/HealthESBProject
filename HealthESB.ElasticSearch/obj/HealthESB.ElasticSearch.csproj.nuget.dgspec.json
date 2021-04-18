@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.ElasticSearch\\HealthESB.ElasticSearch.csproj": {}
   },
   "projects": {
@@ -16,6 +17,28 @@
         "configFilePaths": [
           "C:\\Users\\asoMan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.ElasticSearch\\HealthESB.ElasticSearch.csproj": {}
+  },
+  "projects": {
+    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.ElasticSearch\\HealthESB.ElasticSearch.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.ElasticSearch\\HealthESB.ElasticSearch.csproj",
+        "projectName": "HealthESB.ElasticSearch",
+        "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.ElasticSearch\\HealthESB.ElasticSearch.csproj",
+        "packagesPath": "C:\\Users\\Shirin\\.nuget\\packages\\",
+        "outputPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.ElasticSearch\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Shirin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -28,8 +51,13 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj": {
                 "projectPath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj"
+=======
+              "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj": {
+                "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj"
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
               }
             }
           }
@@ -64,6 +92,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
@@ -80,6 +109,29 @@
         "configFilePaths": [
           "C:\\Users\\asoMan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj",
+        "projectName": "HealthESB.Framework.Utility",
+        "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj",
+        "packagesPath": "C:\\Users\\Shirin\\.nuget\\packages\\",
+        "outputPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Shirin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -128,6 +180,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
@@ -144,6 +197,29 @@
         "configFilePaths": [
           "C:\\Users\\asoMan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj",
+        "projectName": "HealthESB.RabbitMQ",
+        "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\HealthESB.RabbitMQ.csproj",
+        "packagesPath": "C:\\Users\\Shirin\\.nuget\\packages\\",
+        "outputPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.RabbitMQ\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Shirin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -156,8 +232,13 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {
                 "projectPath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj"
+=======
+              "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj": {
+                "projectPath": "C:\\Files\\Ali'sProject\\HealthESB\\HealthESB.Framework.Utility\\HealthESB.Framework.Utility.csproj"
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
               }
             }
           }
@@ -196,7 +277,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
         }
       }
     }

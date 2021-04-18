@@ -15,6 +15,9 @@ namespace HealthESB.EF
 
             int id = 1;
             id = CalimsData.Seed(modelBuilder, id);
+            ProvidersData.Seed(modelBuilder);
+             ProviderApisData.Seed(modelBuilder);
+
 
         }
     }

@@ -19,6 +19,634 @@ namespace HealthESB.API.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangCitizenSessions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("AvihangPersonInfoId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("AvihangUserSessionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AvihangUserSessionsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CitizenSessionId")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NationalNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("ProviderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResMessage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("providersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvihangPersonInfoId");
+
+                    b.HasIndex("AvihangUserSessionsId");
+
+                    b.HasIndex("providersId");
+
+                    b.ToTable("AvihangCitizenSessions");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangPersonInfo", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("accountValidto")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("birthDate")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("cellPhoneNumber")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<int>("countOfFamilyMember")
+                        .HasColumnType("int");
+
+                    b.Property<int>("coverageReferenceInter")
+                        .HasColumnType("int");
+
+                    b.Property<string>("gender")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("geoInfo")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("isCovered")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isReferenceable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("issuerType")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("lastName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("lifeStatus")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("maritalStatus")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("memberImage")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("name")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("nationalNumber")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<int>("productId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("productName")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("registrationStatus")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("relationType")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("responsibleFullName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("responsibleNN")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("specialAccount")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("zipCode")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AvihangPersonInfos");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangPrescriptionSubscriptions", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AvihangPrescriptionId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("AvihangPrescriptionsId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("AvihangSubsciptionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AvihangSubsciptionsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvihangPrescriptionsId");
+
+                    b.HasIndex("AvihangSubsciptionsId");
+
+                    b.ToTable("AvihangPrescriptionSubscriptions");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangPrescriptions", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AvihangSamadId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AvihangSamadsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HID")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ReferenceFeedback")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("ResCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResMessage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("SequenceNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TrackingCode")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvihangSamadsId");
+
+                    b.ToTable("AvihangPrescriptions");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangSamads", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AvihangCitizenSessionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AvihangCitizenSessionsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AvihangUserSessionId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AvihangUserSessionsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ReceiptPartnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResMessage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SamadCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvihangCitizenSessionsId");
+
+                    b.HasIndex("AvihangUserSessionsId");
+
+                    b.ToTable("AvihangSamads");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangSnackMessage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("objectName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("objectValue")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("text")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("type")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AvihangSnackMessages");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangSubsciptions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AvihangSamadId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AvihangSamadsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BulkId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CheckCode")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Consumption")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ConsumptionInstruction")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NationalNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("NumberOfPeriod")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResMessage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("hasContract")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<bool>("isAllowed")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("maxCoveredCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvihangSamadsId");
+
+                    b.ToTable("AvihangSubsciptions");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangTokens", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ResCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResMessage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("TerminalId")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Token")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("dto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ttl")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AvihangTokens");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangUserInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("cPartyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("cellPhone")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("fullName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("gender")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<int>("internalId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isTwoStep")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("partnerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("partnerNN")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("partnerName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AvihangUserInfos");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangUserSessions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AvihangUserInfoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CpartyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MedicalCouncilNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("PartnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResMessage")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SessionId")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("SiamID")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AvihangUserInfoId");
+
+                    b.ToTable("AvihangUserSessions");
+                });
+
             modelBuilder.Entity("HealthESB.Domain.Entities.Claims", b =>
                 {
                     b.Property<int>("Id")
@@ -256,6 +884,17 @@ namespace HealthESB.API.Migrations
                             ActionName = "RemoveClaimsFromRole",
                             ActionTitleEn = "RemoveClaimsFromRole",
                             ActionTitleFr = "حذف دسترسی از نقش",
+                            ControlleEnTitile = "AuthManagement",
+                            ControlleFaTitile = "مدیریت کاربران",
+                            ControllerEntityID = 4,
+                            ControllerName = "AuthManagement"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ActionName = "GetRoleClaims",
+                            ActionTitleEn = "GetRoleClaims",
+                            ActionTitleFr = "لیست دسترسی های نقش",
                             ControlleEnTitile = "AuthManagement",
                             ControlleFaTitile = "مدیریت کاربران",
                             ControllerEntityID = 4,
@@ -528,6 +1167,165 @@ namespace HealthESB.API.Migrations
                     b.ToTable("PrescriptionBarcodeStatus");
                 });
 
+            modelBuilder.Entity("HealthESB.Domain.Entities.ProviderApis", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("ProviderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProvidersId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProvidersId");
+
+                    b.ToTable("ProviderApis");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Key = "ec279046-7f84-428d-ac8a-e7a3a7305a14",
+                            Name = "ثبت نسخه",
+                            ProviderId = 1,
+                            Url = "registerprescription"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Key = "ac89bf71-844c-4d5c-8472-185ee0413d61",
+                            Name = "ثبت داروهای نسخه",
+                            ProviderId = 1,
+                            Url = "checksinglebarcodeuid"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Key = "69869aa7-c493-48eb-acf4-bd21f186672b",
+                            Name = "فعال سازی مجدد ",
+                            ProviderId = 1,
+                            Url = "reactivateuid"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Key = "",
+                            Name = "وب سرویس واکشی توکن",
+                            ProviderId = 2,
+                            Url = "auth/token/fetch"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Key = "",
+                            Name = "وب سرویس ایجاد نشست کاربر",
+                            ProviderId = 2,
+                            Url = "internal/session/cparty/open"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Key = "",
+                            Name = "وب سرویس ایجاد نشست شهروند",
+                            ProviderId = 2,
+                            Url = "auth/session/citizen/open"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Key = "",
+                            Name = "وب سرویس ایجاد کد سماد الکترونیک",
+                            ProviderId = 2,
+                            Url = "samad/electronic/generate"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Key = "",
+                            Name = "وب سرویس ثبت نسخه",
+                            ProviderId = 2,
+                            Url = "prescription/save"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Key = "",
+                            Name = "وب سرویس بررسی ریز نسخه تجویز",
+                            ProviderId = 2,
+                            Url = "subscription/check/order"
+                        });
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.Providers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BaseUrl")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Providers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BaseUrl = "http://api.ttac.ir/insurances/test/v74/",
+                            Name = "سازمان غذا و دارو",
+                            Password = "ghkZKzBwdy",
+                            UserName = "bimeh_salamat"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BaseUrl = "http://test.ihio.gov.ir/erx-core/v3/service/",
+                            Name = "سرویس های نسخه الکترونیک",
+                            Password = "9123085676",
+                            UserName = "HDK_hasanlou_test"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -671,10 +1469,12 @@ namespace HealthESB.API.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -711,10 +1511,12 @@ namespace HealthESB.API.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -722,6 +1524,88 @@ namespace HealthESB.API.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangCitizenSessions", b =>
+                {
+                    b.HasOne("HealthESB.Domain.Entities.AvihangPersonInfo", "AvihangPersonInfo")
+                        .WithMany()
+                        .HasForeignKey("AvihangPersonInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HealthESB.Domain.Entities.AvihangUserSessions", "AvihangUserSessions")
+                        .WithMany()
+                        .HasForeignKey("AvihangUserSessionsId");
+
+                    b.HasOne("HealthESB.Domain.Entities.Providers", "providers")
+                        .WithMany()
+                        .HasForeignKey("providersId");
+
+                    b.Navigation("AvihangPersonInfo");
+
+                    b.Navigation("AvihangUserSessions");
+
+                    b.Navigation("providers");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangPrescriptionSubscriptions", b =>
+                {
+                    b.HasOne("HealthESB.Domain.Entities.AvihangPrescriptions", "AvihangPrescriptions")
+                        .WithMany()
+                        .HasForeignKey("AvihangPrescriptionsId");
+
+                    b.HasOne("HealthESB.Domain.Entities.AvihangSubsciptions", "AvihangSubsciptions")
+                        .WithMany()
+                        .HasForeignKey("AvihangSubsciptionsId");
+
+                    b.Navigation("AvihangPrescriptions");
+
+                    b.Navigation("AvihangSubsciptions");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangPrescriptions", b =>
+                {
+                    b.HasOne("HealthESB.Domain.Entities.AvihangSamads", "AvihangSamads")
+                        .WithMany()
+                        .HasForeignKey("AvihangSamadsId");
+
+                    b.Navigation("AvihangSamads");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangSamads", b =>
+                {
+                    b.HasOne("HealthESB.Domain.Entities.AvihangCitizenSessions", "AvihangCitizenSessions")
+                        .WithMany()
+                        .HasForeignKey("AvihangCitizenSessionsId");
+
+                    b.HasOne("HealthESB.Domain.Entities.AvihangUserSessions", "AvihangUserSessions")
+                        .WithMany()
+                        .HasForeignKey("AvihangUserSessionsId");
+
+                    b.Navigation("AvihangCitizenSessions");
+
+                    b.Navigation("AvihangUserSessions");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangSubsciptions", b =>
+                {
+                    b.HasOne("HealthESB.Domain.Entities.AvihangSamads", "AvihangSamads")
+                        .WithMany()
+                        .HasForeignKey("AvihangSamadsId");
+
+                    b.Navigation("AvihangSamads");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.AvihangUserSessions", b =>
+                {
+                    b.HasOne("HealthESB.Domain.Entities.AvihangUserInfo", "AvihangUserInfo")
+                        .WithMany()
+                        .HasForeignKey("AvihangUserInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AvihangUserInfo");
                 });
 
             modelBuilder.Entity("HealthESB.Domain.Entities.PrescriptionBarcode", b =>
@@ -756,6 +1640,15 @@ namespace HealthESB.API.Migrations
                     b.Navigation("PrescriptionBarcode");
 
                     b.Navigation("PrescriptionBarcodeDetailesTypes");
+                });
+
+            modelBuilder.Entity("HealthESB.Domain.Entities.ProviderApis", b =>
+                {
+                    b.HasOne("HealthESB.Domain.Entities.Providers", "Providers")
+                        .WithMany()
+                        .HasForeignKey("ProvidersId");
+
+                    b.Navigation("Providers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

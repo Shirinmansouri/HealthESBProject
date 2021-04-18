@@ -11,8 +11,7 @@ namespace HealthESB.Framework.Logger
         private ILogger _logger;
         public LogService()
         {
-            ILoggerFactory loggerFactory = new LoggerFactory()
-                .AddNLog();
+            ILoggerFactory loggerFactory = new LoggerFactory() .AddNLog();
             _logger = loggerFactory.CreateLogger<LogService>();
         }
 

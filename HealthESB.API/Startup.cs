@@ -27,6 +27,9 @@ using HealthESB.ElasticSearch.IContracts;
 using HealthESB.ElasticSearch.Implmentation;
 using HealthESB.RabbitMQ.IContract;
 using HealthESB.RabbitMQ.Implementation;
+using HealthESB.Domain.Model.Configuration;
+using Hangfire;
+using Newtonsoft.Json;
 using HealthESB.Domain.IRepository;
 using HealthESB.Persistance.Repository;
 
@@ -61,9 +64,17 @@ namespace HealthESB.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HealthESB.API", Version = "v1" });
             });
             services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
+            services.Configure<CacheConfiguration>(Configuration.GetSection("CacheConfiguration"));
+            services.AddMemoryCache();
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHangfireServer();
             services.AddDbContext<HealthESBDbContext>(options => options.UseSqlServer(
                Configuration["ConnectionStrings:DefaultConnection"],
-               optionsBuilder => optionsBuilder.MigrationsAssembly("HealthESB.API")));
+               optionsBuilder => optionsBuilder.MigrationsAssembly("HealthESB.API")), ServiceLifetime.Singleton);
+
+
+          
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -125,12 +136,14 @@ namespace HealthESB.API
 
                 app.UseCors("CorsPolicy");
             }
+            app.UseCors("CorsPolicy");
             void RequestResponseHandler(RequestProfilerModel requestProfilerModel)
             {
                 Debug.Print(requestProfilerModel.Request);
                 Debug.Print(Environment.NewLine);
                 Debug.Print(requestProfilerModel.Response);
             }
+            app.UseHangfireDashboard("/jobs");
             app.UseMiddleware<RequestResponseLoggingMiddleware>((Action<RequestProfilerModel>)RequestResponseHandler);
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseAuthentication();

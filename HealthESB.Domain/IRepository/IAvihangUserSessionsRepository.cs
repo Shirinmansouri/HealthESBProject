@@ -1,0 +1,14 @@
+﻿using HealthESB.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HealthESB.Domain.IRepository
+{
+    public interface IAvihangUserSessionsRepository:IGenericRepository<AvihangUserSessions>
+    {
+        Task<AvihangUserSessions> GetByPartnerIdAndCpartyId(int PartnerId, int CpartyId);
+    }
+}

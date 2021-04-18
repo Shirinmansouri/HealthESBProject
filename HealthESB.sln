@@ -15,17 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.EF", "HealthESB.E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Infrastructure", "HealthESB.Infrastructure\HealthESB.Infrastructure.csproj", "{8D273224-7FF7-46BD-B958-E691816103EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Domain", "HealthESB.Domain\HealthESB.Domain.csproj", "{34DA90A0-DB22-46CB-A068-D84EAB0512EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Domain", "HealthESB.Domain\HealthESB.Domain.csproj", "{34DA90A0-DB22-46CB-A068-D84EAB0512EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.Persistance", "HealthESB.Persistance\HealthESB.Persistance.csproj", "{66AF63A3-C88B-424A-9EF5-DA2181A7896F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.Persistance", "HealthESB.Persistance\HealthESB.Persistance.csproj", "{66AF63A3-C88B-424A-9EF5-DA2181A7896F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.API", "HealthESB.API\HealthESB.API.csproj", "{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.RabbitMQ", "HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj", "{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthESB.ElasticSearch", "HealthESB.ElasticSearch\HealthESB.ElasticSearch.csproj", "{4160844B-E78F-410F-B764-699418001F12}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.WindowsWorker", "HealthESB.WindowsWorker\HealthESB.WindowsWorker.csproj", "{6900CD33-3C89-47FB-A013-7210812041AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthESB.API", "HealthESB.API\HealthESB.API.csproj", "{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,18 +59,6 @@ Global
 		{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3F6EB17-A8A7-4EA6-A62C-B23933BD08C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B89B1D0-8E1A-47EA-BEB6-9FB734544398}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4160844B-E78F-410F-B764-699418001F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4160844B-E78F-410F-B764-699418001F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4160844B-E78F-410F-B764-699418001F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4160844B-E78F-410F-B764-699418001F12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6900CD33-3C89-47FB-A013-7210812041AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6900CD33-3C89-47FB-A013-7210812041AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6900CD33-3C89-47FB-A013-7210812041AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6900CD33-3C89-47FB-A013-7210812041AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Hangfire" Version="1.7.22" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.3" />
@@ -24,7 +25,12 @@
     <ProjectReference Include="..\HealthESB.Domain\HealthESB.Domain.csproj" />
     <ProjectReference Include="..\HealthESB.EF\HealthESB.EF.csproj" />
     <ProjectReference Include="..\HealthESB.ElasticSearch\HealthESB.ElasticSearch.csproj" />
+<<<<<<< HEAD
+=======
+    <ProjectReference Include="..\HealthESB.Framework.Utility\HealthESB.Framework.Utility.csproj" />
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
     <ProjectReference Include="..\HealthESB.Framwork.DependecyConfig\HealthESB.Framework.DependecyConfig.csproj" />
+    <ProjectReference Include="..\HealthESB.Infrastructure\HealthESB.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

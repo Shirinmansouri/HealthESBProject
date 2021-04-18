@@ -5,12 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HealthESB.Framework.Utility\HealthESB.Framework.Utility.csproj" />
+<<<<<<< HEAD
     <ProjectReference Include="..\HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj" />
+=======
+ 
+    <ProjectReference Include="..\HealthESB.Framwork.Logger\HealthESB.Framework.Logger.csproj" />
+ 
+    <ProjectReference Include="..\HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj" />
+  
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
   </ItemGroup>
 
 </Project>

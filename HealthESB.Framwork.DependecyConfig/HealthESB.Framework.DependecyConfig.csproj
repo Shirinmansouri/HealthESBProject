@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HealthESB.Domain\HealthESB.Domain.csproj" />
     <ProjectReference Include="..\HealthESB.Framwork.Logger\HealthESB.Framework.Logger.csproj" />
+    <ProjectReference Include="..\HealthESB.Infrastructure\HealthESB.Infrastructure.csproj" />
     <ProjectReference Include="..\HealthESB.Persistance\HealthESB.Persistance.csproj" />
   </ItemGroup>
 

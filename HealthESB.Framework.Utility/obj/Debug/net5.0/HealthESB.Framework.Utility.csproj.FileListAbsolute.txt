@@ -2,6 +2,7 @@ C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\bin\Debug\net5.0\Hea
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\bin\Debug\net5.0\HealthESB.Framework.Utility.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\bin\Debug\net5.0\ref\HealthESB.Framework.Utility.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\bin\Debug\net5.0\HealthESB.Framework.Utility.pdb
+C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.csprojAssemblyReference.cache
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.GeneratedMSBuildEditorConfig.editorconfig
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.AssemblyInfoInputs.cache
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.AssemblyInfo.cs
@@ -9,6 +10,7 @@ C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\Hea
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\ref\HealthESB.Framework.Utility.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.pdb
+<<<<<<< HEAD
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.csprojAssemblyReference.cache
 C:\healthESB\Core\HealthESBProject\HealthESB.Framework.Utility\bin\Debug\net5.0\HealthESB.Framework.Utility.deps.json
 C:\healthESB\Core\HealthESBProject\HealthESB.Framework.Utility\bin\Debug\net5.0\HealthESB.Framework.Utility.dll
@@ -22,3 +24,5 @@ C:\healthESB\Core\HealthESBProject\HealthESB.Framework.Utility\obj\Debug\net5.0\
 C:\healthESB\Core\HealthESBProject\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Framework.Utility\obj\Debug\net5.0\ref\HealthESB.Framework.Utility.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Framework.Utility\obj\Debug\net5.0\HealthESB.Framework.Utility.pdb
+=======
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5

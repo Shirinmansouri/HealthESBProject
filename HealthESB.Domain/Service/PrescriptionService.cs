@@ -9,7 +9,7 @@ using HealthESB.Domain.IRepository;
 using HealthESB.Domain.Model;
 using HealthESB.Domain.Entities;
 using HealthESB.Framework.Utility;
-using HealthESB.Infrastructure;
+using HealthESB.Infrastructure.TTAC;
 using HealthESB.Infrastructure.Model;
 
 namespace HealthESB.Domain.Service
@@ -35,7 +35,7 @@ namespace HealthESB.Domain.Service
             var response = new PrescriptionResponse();
             try
             {
-                TTAC tTAC = new TTAC(this._serviceProvider);
+                TTAC tTAC = new TTAC();
                 Prescription prescription = new Prescription();
                 prescriptionRequest.CopyPropertiesTo(prescription);
                 await _PrescriptionRepository.Add(prescription);

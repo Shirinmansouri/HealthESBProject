@@ -1,4 +1,5 @@
 ﻿using HealthESB.Domain.Entities;
+using HealthESB.Framework.Utility;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,28 +19,36 @@ namespace HealthESB.Domain.IRepository
         public GenericRepository(TContext context)
         {
             Context = context;
+
         }
 
-        public System.Threading.Tasks.ValueTask<TEntity> GetById(int id) => Context.Set<TEntity>().FindAsync(id);
-        public Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
-                   => Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
-        public Task<TEntity> LastOrDefault(Expression<Func<TEntity, bool>> predicate)
-            => Context.Set<TEntity>().LastOrDefaultAsync(predicate);
-        public TEntity FirstOrDefaultNormal(Expression<Func<TEntity, bool>> predicate)
-      => Context.Set<TEntity>().FirstOrDefault(predicate);
-        public async Task Add(TEntity entity)
+        public virtual   System.Threading.Tasks.ValueTask<TEntity> GetById(int id)
         {
-            // await Context.AddAsync(entity);
+            return Context.Set<TEntity>().FindAsync(id);
+        }
+        public Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+        }
+        public Task<TEntity> LastOrDefault(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().LastOrDefaultAsync(predicate);
+        }
+        public TEntity FirstOrDefaultNormal(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().FirstOrDefault(predicate);
+        }
+        public virtual async Task Add(TEntity entity)
+        {
             await Context.Set<TEntity>().AddAsync(entity);
             await Context.SaveChangesAsync();
         }
 
 
-        public Task Update(TEntity entity)
+        public virtual async Task Update(TEntity entity)
         {
-            // In case AsNoTracking is used
             Context.Entry(entity).State = EntityState.Modified;
-            return Context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
         public bool UpdateNormal(TEntity entity)
         {
@@ -54,8 +63,9 @@ namespace HealthESB.Domain.IRepository
             return Context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public virtual async Task<IEnumerable<TEntity>> GetAll()
         {
+
             return await Context.Set<TEntity>().ToListAsync();
         }
 
@@ -114,5 +124,6 @@ namespace HealthESB.Domain.IRepository
         {
             return await Context.Set<TEntity>().Select(predicate).MaxAsync();
         }
+       
     }
 }

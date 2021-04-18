@@ -1,5 +1,7 @@
 ﻿using Microsoft.ApplicationInsights.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +19,24 @@ namespace HealthESB.Framework.Utility
         public static byte[] KeyAgent = ASCIIEncoding.ASCII.GetBytes("rvfnaped");
         public static byte[] KeyDESAC = ASCIIEncoding.ASCII.GetBytes("rsfnaded");
         public static byte[] KeyDESNMS = ASCIIEncoding.ASCII.GetBytes("rsfnaded");
+        public static string ToJson<T>(T secureRequest)
+        {
+            return JsonConvert.SerializeObject(secureRequest);
+        }
+        public static T JsonTextToModel<T>(string secureRequest)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(secureRequest);
+            }
+            catch (Exception ex)
+            {
 
+                throw;
+            }
+          
+        }
+       
         public static object GetRequiredService(this IServiceProvider provider, Type serviceType)
         {
             var requiredServiceSupportingProvider = provider as ISupportRequiredService;

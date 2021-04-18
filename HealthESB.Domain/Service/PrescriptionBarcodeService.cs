@@ -7,7 +7,7 @@ using HealthESB.Domain.IService;
 using HealthESB.Domain.IRepository;
 using HealthESB.Framework.Logger;
 using HealthESB.Domain.Model;
-using HealthESB.Infrastructure;
+using HealthESB.Infrastructure.TTAC;
 using HealthESB.Domain.Entities;
 using HealthESB.Framework.Utility;
 using HealthESB.Infrastructure.Model;
@@ -21,8 +21,8 @@ namespace HealthESB.Domain.Service
         private IPrescriptionBarcodeDetailesRepository _prescriptionBarcodeDetailesRepository;
         private ILogService _logService;
         private IServiceProvider _serviceProvider;
-        public PrescriptionBarcodeService(IPrescriptionRepository prescriptionRepository, 
-            IPrescriptionBarcodeRepository prescriptionBarcodeRepository, 
+        public PrescriptionBarcodeService(IPrescriptionRepository prescriptionRepository,
+            IPrescriptionBarcodeRepository prescriptionBarcodeRepository,
             ILogService logService,
             IPrescriptionBarcodeDetailesRepository prescriptionBarcodeDetailesRepository,
             IServiceProvider serviceProvider)
@@ -40,6 +40,7 @@ namespace HealthESB.Domain.Service
             var response = new PrescriptionBarcodeResponse();
             response.ItemsInfo = new List<PrescriptionBarcodeDetailesResponse>();
             var prescriptionBarcodeDetailes = new PrescriptionBarcodeDetailes();
+            TTAC tTAC = new TTAC(_serviceProvider);
             var prescriptionBarcodeDetailesResponse = new PrescriptionBarcodeDetailesResponse();
             try
             {
@@ -51,7 +52,6 @@ namespace HealthESB.Domain.Service
 
                 if (string.IsNullOrEmpty(prescriptionBarcodeRequest.ReCheckCode)) prescriptionBarcodeRequest.ReCheckCode = Guid.NewGuid().ToString();
 
-                TTAC tTAC = new TTAC(_serviceProvider);
                 PrescriptionBarcode prescriptionBarcode = new PrescriptionBarcode();
                 prescriptionBarcodeRequest.CopyPropertiesTo(prescriptionBarcode);
                 var result = await _prescriptionRepository.FirstOrDefault(a => a.OutPrescriptionId == prescriptionBarcodeRequest.PrescriptionId);
@@ -122,9 +122,7 @@ namespace HealthESB.Domain.Service
             {
                 if (string.IsNullOrEmpty(reactiveRequest.BarcodeUid) || string.IsNullOrEmpty(reactiveRequest.PharmacyGln) || reactiveRequest.Amount == 0 || reactiveRequest.TrackingCode == 0)
                     return response.ToIncompleteInput<ReactiveResponse>();
-
                 TTAC tTAC = new TTAC(_serviceProvider);
-
                 var result = await _prescriptionBarcodeDetailesRepository.FirstOrDefault(a => a.TrackingCode == reactiveRequest.TrackingCode && a.BarcodeUid == reactiveRequest.BarcodeUid);
                 if (result == null)
                     return response.ToRowNotFound<ReactiveResponse>();
@@ -163,7 +161,7 @@ namespace HealthESB.Domain.Service
             }
             catch (Exception e)
             {
-  
+
                 _logService.LogText("PrescriptionBarcodeInternalError" + e.Message.ToString());
                 throw new Exception(e.Message);
             }
@@ -206,7 +204,6 @@ namespace HealthESB.Domain.Service
             {
                 if (PrescriptionId == 0)
                     return response.ToIncompleteInput<ReactiveResponse>();
-
                 TTAC tTAC = new TTAC(_serviceProvider);
                 var result = await _prescriptionBarcodeDetailesRepository.GetWhere(a => a.PrescriptionBarcode.PrescriptionId == PrescriptionId
                 && a.Status == 0);
@@ -216,7 +213,7 @@ namespace HealthESB.Domain.Service
                     return response.ToRowNotFound<ReactiveResponse>();
                 foreach (var item in result)
                 {
-               
+
 
                     TTACReactiveRequest tTACReactiveRequest = new TTACReactiveRequest();
                     TTACReactiveResponse tTACReactiveResponse = new TTACReactiveResponse();
@@ -243,7 +240,7 @@ namespace HealthESB.Domain.Service
                         resultItem.CopyPropertiesTo(prescriptionBarcodeDetailesResponse);
                         response.ItemsInfo.Add(prescriptionBarcodeDetailesResponse);
 
-                        if (tTACReactiveResponse.ErrorCode == 0 && (resultItem.Status == 100 || resultItem.Status==111))
+                        if (tTACReactiveResponse.ErrorCode == 0 && (resultItem.Status == 100 || resultItem.Status == 111))
                         {
                             prescriptionBarcode.PrescriptionBarcodeStatusId = (int)PrescriptionBarcodeStatusEnum.ReActiveRequest;
                             await _prescriptionBarcodeRepository.Update(prescriptionBarcode);

@@ -2,6 +2,7 @@ C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\bin\Debug\net5.0\Healt
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\bin\Debug\net5.0\HealthESB.Framework.Logger.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\bin\Debug\net5.0\ref\HealthESB.Framework.Logger.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\bin\Debug\net5.0\HealthESB.Framework.Logger.pdb
+C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.csprojAssemblyReference.cache
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.GeneratedMSBuildEditorConfig.editorconfig
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.AssemblyInfoInputs.cache
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.AssemblyInfo.cs
@@ -9,6 +10,7 @@ C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\Healt
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\ref\HealthESB.Framework.Logger.dll
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.pdb
+<<<<<<< HEAD
 C:\Files\Ali'sProject\HealthESB\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.csprojAssemblyReference.cache
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\bin\Debug\net5.0\HealthESB.Framework.Logger.deps.json
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\bin\Debug\net5.0\HealthESB.Framework.Logger.dll
@@ -22,3 +24,5 @@ C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\He
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\ref\HealthESB.Framework.Logger.dll
 C:\healthESB\Core\HealthESBProject\HealthESB.Framwork.Logger\obj\Debug\net5.0\HealthESB.Framework.Logger.pdb
+=======
+>>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
