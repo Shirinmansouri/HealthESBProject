@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GUQO911QT7Zm1KGVqbFEdDCM8QLa8L044b37LAylliffWwsCxxZOYMgSseqDo76MarQsW0vrpadmRZsVNmMkIg==",
+  "dgSpecHash": "AJt/WkRFpL0/l27GrbSB2q43k5vRIRWJIcZ/3HepgUbUyVkAeI5viLhoGQU0M9EloHzLeA6GFnsOioSua+gaSw==",
   "success": true,
   "projectFilePath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.API\\HealthESB.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\asoMan\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.applicationinsights\\2.17.0\\microsoft.applicationinsights.2.17.0.nupkg.sha512",

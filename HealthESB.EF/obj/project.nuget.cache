@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Anrwt+hPm0e9yZQ5wUqUw0A7gVArqNE6MOsr1kU7sDYeXRLR1YyWUuW2qiNS/VASzVnkYG358E6VGn/XZ1AhDA==",
+  "dgSpecHash": "FpsU7JcF/SWy6OB+cHZHP0foWzXHYQJ1RgimxqtlZOcHTO9bJDwaYzEGTQHWrEkpjrfjmSfUoHgn11V3vVR0rw==",
   "success": true,
   "projectFilePath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.EF\\HealthESB.EF.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\asoMan\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.applicationinsights\\2.17.0\\microsoft.applicationinsights.2.17.0.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.applicationinsights.aspnetcore\\2.17.0\\microsoft.applicationinsights.aspnetcore.2.17.0.nupkg.sha512",

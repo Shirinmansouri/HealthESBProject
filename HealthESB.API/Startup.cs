@@ -27,6 +27,8 @@ using HealthESB.ElasticSearch.IContracts;
 using HealthESB.ElasticSearch.Implmentation;
 using HealthESB.RabbitMQ.IContract;
 using HealthESB.RabbitMQ.Implementation;
+using HealthESB.Domain.IRepository;
+using HealthESB.Persistance.Repository;
 
 namespace HealthESB.API
 {
@@ -96,6 +98,7 @@ namespace HealthESB.API
                             .AddEntityFrameworkStores<HealthESBDbContext>();
             services.AddScoped<IElasticService, ElasticService>();
             services.AddScoped<IRabbitMqService, RabbitMqService>();
+            services.AddScoped<IDapperRepository, DapperRepository>();
 
             services.AddSingleton<IConfiguration>(Configuration);
             Constants.TTAC_BaseUrl = Configuration["TTAC:BaseUrl"];

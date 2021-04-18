@@ -1,19 +1,12 @@
-﻿using HealthESB.WindowsWorker.Config.Rabbit;
-using HealthESB.WindowsWorker.Models;
-using HealthESB.WindowsWorker.Services.ElasticSearch;
+﻿using HealthESB.WindowsWorker.Models;
 using HealthESB.WindowsWorker.Services.Rabbit.Business;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 using Serilog;
 using Serilog.Enrichers;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HealthESB.RabbitMQ.Config;
 
 namespace HealthESB.WindowsWorker.Services.Rabbit

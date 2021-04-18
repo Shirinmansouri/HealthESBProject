@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HealthESB.Domain\HealthESB.Domain.csproj" />
     <ProjectReference Include="..\HealthESB.EF\HealthESB.EF.csproj" />
   </ItemGroup>

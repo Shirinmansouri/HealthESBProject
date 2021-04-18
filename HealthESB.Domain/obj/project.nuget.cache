@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "R7JIDhRPy0XDU+c+JwDHOrrmeoTATYgywk02PS6ZBZeGhmS/PP4CfvoKMyz3Bqo1bXjMe2FXyzEf5htKQ+RAdg==",
+  "dgSpecHash": "pB65IbfvikdmAmJS1d0kGpSKlH2HZLrhcqCyLrGBtvWrx27+X93G60tR4GjwYDbFggorsO5a8/x2ZpD3vTlAzA==",
   "success": true,
   "projectFilePath": "C:\\healthESB\\Core\\HealthESBProject\\HealthESB.Domain\\HealthESB.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\asoMan\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.applicationinsights\\2.17.0\\microsoft.applicationinsights.2.17.0.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.applicationinsights.aspnetcore\\2.17.0\\microsoft.applicationinsights.aspnetcore.2.17.0.nupkg.sha512",
     "C:\\Users\\asoMan\\.nuget\\packages\\microsoft.applicationinsights.dependencycollector\\2.17.0\\microsoft.applicationinsights.dependencycollector.2.17.0.nupkg.sha512",
