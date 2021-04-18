@@ -13,15 +13,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HealthESB.Framework.Utility\HealthESB.Framework.Utility.csproj" />
-<<<<<<< HEAD
     <ProjectReference Include="..\HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj" />
-=======
  
     <ProjectReference Include="..\HealthESB.Framwork.Logger\HealthESB.Framework.Logger.csproj" />
  
     <ProjectReference Include="..\HealthESB.RabbitMQ\HealthESB.RabbitMQ.csproj" />
   
->>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
   </ItemGroup>
 
 </Project>

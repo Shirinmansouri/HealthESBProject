@@ -1,9 +1,0 @@
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\bin\Debug\netcoreapp3.1\HealthESB.ElasticSearch.deps.json
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\bin\Debug\netcoreapp3.1\HealthESB.ElasticSearch.dll
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\bin\Debug\netcoreapp3.1\HealthESB.ElasticSearch.pdb
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\obj\Debug\netcoreapp3.1\HealthESB.ElasticSearch.csprojAssemblyReference.cache
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\obj\Debug\netcoreapp3.1\HealthESB.ElasticSearch.AssemblyInfoInputs.cache
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\obj\Debug\netcoreapp3.1\HealthESB.ElasticSearch.AssemblyInfo.cs
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\obj\Debug\netcoreapp3.1\HealthESB.ElasticSearch.csproj.CoreCompileInputs.cache
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\obj\Debug\netcoreapp3.1\HealthESB.ElasticSearch.dll
-C:\healthESB\Core\HealthESBProject\HealthESB.ElasticSearch\obj\Debug\netcoreapp3.1\HealthESB.ElasticSearch.pdb

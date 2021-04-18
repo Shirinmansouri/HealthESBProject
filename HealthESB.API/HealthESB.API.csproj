@@ -25,10 +25,7 @@
     <ProjectReference Include="..\HealthESB.Domain\HealthESB.Domain.csproj" />
     <ProjectReference Include="..\HealthESB.EF\HealthESB.EF.csproj" />
     <ProjectReference Include="..\HealthESB.ElasticSearch\HealthESB.ElasticSearch.csproj" />
-<<<<<<< HEAD
-=======
     <ProjectReference Include="..\HealthESB.Framework.Utility\HealthESB.Framework.Utility.csproj" />
->>>>>>> 4a45e172eb835968fb811ce8564873252679ddc5
     <ProjectReference Include="..\HealthESB.Framwork.DependecyConfig\HealthESB.Framework.DependecyConfig.csproj" />
     <ProjectReference Include="..\HealthESB.Infrastructure\HealthESB.Infrastructure.csproj" />
   </ItemGroup>

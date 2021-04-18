@@ -38,9 +38,9 @@ namespace HealthESB.Infrastructure.TTAC
                     streamWriter.Write(JsonConvert.SerializeObject(prescriptionRequest));
                 }
 
-                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, JsonConvert.SerializeObject(request));
+                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.ElasticLogs, JsonConvert.SerializeObject(request));
                 var httpResponse = (HttpWebResponse)(await request.GetResponseAsync().ConfigureAwait(false));
-                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.Inbox, JsonConvert.SerializeObject(httpResponse));
+                _rabbitMqService.PublishToQueue(RabbitMQ.Config.RabbitQueue.ElasticLogs, JsonConvert.SerializeObject(httpResponse));
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = await streamReader.ReadToEndAsync().ConfigureAwait(false);

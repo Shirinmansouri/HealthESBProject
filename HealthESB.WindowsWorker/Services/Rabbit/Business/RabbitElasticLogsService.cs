@@ -1,5 +1,4 @@
 ﻿using HealthESB.RabbitMQ.Config;
-using HealthESB.WindowsWorker.Config.Rabbit;
 using HealthESB.WindowsWorker.Models;
 using HealthESB.WindowsWorker.Services.ElasticSearch;
 using Microsoft.Extensions.DependencyInjection;

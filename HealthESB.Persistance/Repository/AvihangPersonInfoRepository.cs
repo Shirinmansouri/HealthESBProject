@@ -15,11 +15,10 @@ namespace HealthESB.Persistance.Repository
     public class AvihangPersonInfoRepository : GenericRepository<AvihangPersonInfo, HealthESBDbContext>,
             IAvihangPersonInfoRepository
     {
-        public AvihangPersonInfoRepository(HealthESBDbContext context) : base(context)
+        private IDapperRepository _dapperRepository;
+        public AvihangPersonInfoRepository(HealthESBDbContext context, IDapperRepository _dapperRepository) : base(context)
         {
         }
-
-      
     }
 }
 

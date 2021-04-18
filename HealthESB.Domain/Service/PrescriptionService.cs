@@ -35,7 +35,7 @@ namespace HealthESB.Domain.Service
             var response = new PrescriptionResponse();
             try
             {
-                TTAC tTAC = new TTAC();
+                TTAC tTAC = new TTAC(_serviceProvider);
                 Prescription prescription = new Prescription();
                 prescriptionRequest.CopyPropertiesTo(prescription);
                 await _PrescriptionRepository.Add(prescription);
